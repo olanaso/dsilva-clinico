@@ -19,34 +19,46 @@ import SpecialtyCard from "@/components/SpecialtyCard";
 const Especialidades = () => {
   const specialties = [
     {
-      icon: Heart,
-      title: "Cardiología",
+      icon: Syringe,
+      title: "Medicina Ocupacional",
       description:
-        "Diagnóstico, tratamiento y prevención de enfermedades cardiovasculares. Electrocardiogramas, ecocardiografías y pruebas de esfuerzo.",
+        "Exámenes médicos ocupacionales con más de 13 años de experiencia. Servicio ágil y seguro conforme a normativas de salud y seguridad laboral.",
     },
     {
       icon: Stethoscope,
-      title: "Medicina General",
+      title: "Consulta Médica General",
       description:
         "Atención primaria integral para toda la familia. Consultas preventivas, diagnóstico y tratamiento de enfermedades comunes.",
     },
     {
-      icon: Eye,
-      title: "Oftalmología",
+      icon: Brain,
+      title: "Psicología",
       description:
-        "Cuidado completo de la salud visual. Exámenes de la vista, cirugías láser, tratamiento de cataratas y glaucoma.",
+        "Atención psicológica profesional para el bienestar mental y emocional. Evaluaciones y terapias personalizadas.",
+    },
+    {
+      icon: Heart,
+      title: "Odontología",
+      description:
+        "Cuidado integral de la salud bucal. Tratamientos preventivos, restaurativos y estéticos con tecnología moderna.",
     },
     {
       icon: Microscope,
-      title: "Laboratorio Clínico",
+      title: "Laboratorio Clínico Automatizado",
       description:
-        "Análisis clínicos completos con tecnología avanzada. Resultados rápidos y precisos para apoyar diagnósticos médicos.",
+        "Análisis clínicos completos con tecnología automatizada de última generación. Resultados rápidos, precisos y confiables.",
     },
     {
-      icon: Brain,
-      title: "Neurología",
+      icon: Activity,
+      title: "Radiología Digital",
       description:
-        "Evaluación y tratamiento de trastornos del sistema nervioso. Migrañas, epilepsia, Alzheimer y otras condiciones neurológicas.",
+        "Estudios radiológicos con tecnología digital de alta resolución. Diagnóstico por imágenes preciso y seguro.",
+    },
+    {
+      icon: Eye,
+      title: "Óptica",
+      description:
+        "Evaluación visual completa y dispensación de lentes oftálmicos. Asesoría personalizada para el cuidado de tu visión.",
     },
     {
       icon: Pill,
@@ -55,40 +67,28 @@ const Especialidades = () => {
         "Dispensación de medicamentos de calidad. Asesoría farmacéutica profesional y seguimiento de tratamientos.",
     },
     {
-      icon: Baby,
-      title: "Pediatría",
+      icon: Heart,
+      title: "Cardiología",
       description:
-        "Atención especializada para niños desde el nacimiento hasta la adolescencia. Control de crecimiento y vacunación.",
+        "Diagnóstico, tratamiento y prevención de enfermedades cardiovasculares. Electrocardiogramas y evaluaciones especializadas.",
+    },
+    {
+      icon: Brain,
+      title: "Neurología",
+      description:
+        "Evaluación y tratamiento de trastornos del sistema nervioso. Atención especializada con equipo calificado.",
     },
     {
       icon: Bone,
       title: "Traumatología",
       description:
-        "Diagnóstico y tratamiento de lesiones del sistema musculoesquelético. Fracturas, esguinces y rehabilitación.",
-    },
-    {
-      icon: Ear,
-      title: "Otorrinolaringología",
-      description:
-        "Tratamiento de enfermedades de oído, nariz y garganta. Audiometrías, cirugías y tratamiento de alergias.",
+        "Diagnóstico y tratamiento de lesiones del sistema musculoesquelético. Atención profesional y rehabilitación.",
     },
     {
       icon: Droplets,
-      title: "Endocrinología",
+      title: "Otras Especialidades Médicas",
       description:
-        "Especialización en trastornos hormonales y metabólicos. Diabetes, tiroides y obesidad.",
-    },
-    {
-      icon: Activity,
-      title: "Gastroenterología",
-      description:
-        "Diagnóstico y tratamiento de enfermedades del sistema digestivo. Endoscopias, colonoscopias y más.",
-    },
-    {
-      icon: Syringe,
-      title: "Medicina Ocupacional",
-      description:
-        "Evaluaciones médicas laborales, exámenes ocupacionales y programas de salud empresarial.",
+        "Contamos con diversos especialistas médicos para atender todas tus necesidades de salud de manera integral.",
     },
   ];
 

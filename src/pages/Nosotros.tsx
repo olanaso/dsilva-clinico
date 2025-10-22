@@ -50,16 +50,25 @@ const Nosotros = () => {
             <div className="space-y-6 animate-fade-in">
               <h2 className="font-display text-4xl font-bold">Quiénes Somos</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                D'Silva Policlínico es un centro médico especializado que nace con el compromiso de brindar
-                servicios de salud de la más alta calidad a toda la comunidad.
+                Policlínico D'SILVA es una institución de salud con <strong>más de 13 años de experiencia</strong> al 
+                servicio de la salud ocupacional y ambulatoria, trabajando con importantes empresas del país como 
+                MMG Las Bambas, Graña y Montero, Concar, Mota-Engil, Adecco Perú, Manpower, EPSA y Minera Antares, 
+                entre otras.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Contamos con un equipo multidisciplinario de profesionales médicos altamente capacitados,
-                equipamiento de última generación y un enfoque integral en la atención al paciente.
+                Nos especializamos en la realización de <strong>exámenes médicos ocupacionales</strong>, brindando un 
+                servicio ágil, seguro y conforme a los más altos estándares exigidos por las normativas de salud y 
+                seguridad laboral. A lo largo de estos años, hemos construido una sólida reputación como aliados 
+                estratégicos en la protección de la salud de los trabajadores.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Nuestro objetivo es ser tu aliado en el cuidado de la salud, ofreciendo un servicio cálido,
-                profesional y accesible para toda la familia.
+                Además, ofrecemos atenciones médicas ambulatorias a la comunidad en general, con servicios de consulta 
+                médica general, psicología, odontología, especialidades médicas, farmacia, laboratorio clínico 
+                automatizado, radiología digital y óptica.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Contamos con una moderna infraestructura, equipos de última tecnología y un equipo humano calificado 
+                y comprometido, que garantiza una atención cálida, personalizada y eficaz.
               </p>
             </div>
             <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
@@ -83,9 +92,8 @@ const Nosotros = () => {
               </div>
               <h3 className="font-display text-2xl font-bold mb-4">Nuestra Misión</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Brindar servicios de salud integrales y de calidad, con un enfoque humano y profesional,
-                utilizando tecnología de vanguardia para mejorar la calidad de vida de nuestros pacientes y
-                sus familias.
+                Contribuir al bienestar físico y mental de nuestros pacientes, ofreciendo servicios de salud 
+                ocupacional y atención médica integral con calidad, ética profesional y tecnología de vanguardia.
               </p>
             </div>
             <div className="bg-background p-8 rounded-2xl shadow-card-custom animate-fade-in" style={{ animationDelay: "100ms" }}>
@@ -94,9 +102,9 @@ const Nosotros = () => {
               </div>
               <h3 className="font-display text-2xl font-bold mb-4">Nuestra Visión</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Ser reconocidos como el policlínico líder en atención médica especializada, destacando por
-                nuestra excelencia profesional, innovación tecnológica y compromiso con el bienestar integral
-                de la comunidad.
+                Ser un centro médico líder en salud ocupacional y ambulatoria en la región, reconocido por su 
+                excelencia en el servicio, innovación y compromiso con la salud de las personas y el desarrollo 
+                de las empresas.
               </p>
             </div>
           </div>
