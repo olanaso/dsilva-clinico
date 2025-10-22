@@ -37,25 +37,25 @@ const Contacto = () => {
     {
       icon: Phone,
       title: "Teléfono",
-      details: ["+51 987 654 321", "+51 987 654 322"],
-      action: "tel:+51987654321",
+      details: ["+51 929 312 370"],
+      action: "tel:+51929312370",
     },
     {
       icon: Mail,
       title: "Correo Electrónico",
-      details: ["info@dsilva.com", "citas@dsilva.com"],
-      action: "mailto:info@dsilva.com",
+      details: ["administracion@dsilvapoliclinico.com"],
+      action: "mailto:administracion@dsilvapoliclinico.com",
     },
     {
       icon: MapPin,
-      title: "Dirección",
-      details: ["Av. Principal 123", "Lima, Perú"],
+      title: "Dirección Challhuahuacho",
+      details: ["Av. Sulfubamba S/N", "Challhuahuacho"],
       action: "#",
     },
     {
-      icon: Clock,
-      title: "Horario",
-      details: ["Lun - Vie: 8:00 AM - 8:00 PM", "Sáb: 9:00 AM - 2:00 PM"],
+      icon: MapPin,
+      title: "Dirección Cusco",
+      details: ["Av. Túpac Amaru O-5", "Wanchaq - Cusco"],
       action: "#",
     },
   ];
@@ -101,6 +101,36 @@ const Contacto = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Horarios */}
+          <div className="mt-8 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <Card className="shadow-card-custom">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-gradient-secondary flex items-center justify-center mb-3">
+                  <Clock className="h-6 w-6 text-secondary-foreground" />
+                </div>
+                <CardTitle className="text-lg">Horarios Challhuahuacho</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-sm font-medium mb-1">Lunes - Domingo</p>
+                <p className="text-muted-foreground text-sm">8:00 AM - 12:00 PM</p>
+                <p className="text-muted-foreground text-sm">2:30 PM - 8:30 PM</p>
+              </CardContent>
+            </Card>
+            <Card className="shadow-card-custom">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-gradient-secondary flex items-center justify-center mb-3">
+                  <Clock className="h-6 w-6 text-secondary-foreground" />
+                </div>
+                <CardTitle className="text-lg">Horarios Cusco</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-sm font-medium mb-1">Lunes - Sábado</p>
+                <p className="text-muted-foreground text-sm">7:00 AM - 12:00 PM</p>
+                <p className="text-muted-foreground text-sm">2:30 PM - 7:00 PM</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -191,12 +221,26 @@ const Contacto = () => {
                   atención médica.
                 </p>
               </div>
-              <div className="bg-muted rounded-xl overflow-hidden shadow-card-custom h-[400px] flex items-center justify-center">
-                <div className="text-center p-8">
-                  <MapPin className="h-16 w-16 text-secondary mx-auto mb-4" />
-                  <h4 className="font-display font-semibold text-lg mb-2">D'Silva Policlínico</h4>
-                  <p className="text-muted-foreground">Av. Principal 123</p>
-                  <p className="text-muted-foreground">Lima, Perú</p>
+              <div className="bg-muted rounded-xl overflow-hidden shadow-card-custom p-8">
+                <div className="space-y-6">
+                  <div className="text-center pb-4 border-b border-border">
+                    <MapPin className="h-12 w-12 text-secondary mx-auto mb-3" />
+                    <h4 className="font-display font-semibold text-xl mb-1">Policlínico Ocupacional Challhuahuacho SAC</h4>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-background p-4 rounded-lg">
+                      <p className="font-semibold text-secondary mb-2">Sede Challhuahuacho</p>
+                      <p className="text-muted-foreground text-sm">Av. Sulfubamba S/N</p>
+                      <p className="text-muted-foreground text-sm">Challhuahuacho</p>
+                    </div>
+                    
+                    <div className="bg-background p-4 rounded-lg">
+                      <p className="font-semibold text-secondary mb-2">Sede Cusco</p>
+                      <p className="text-muted-foreground text-sm">Av. Túpac Amaru O-5</p>
+                      <p className="text-muted-foreground text-sm">Wanchaq - Cusco</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
