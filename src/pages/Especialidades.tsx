@@ -21,74 +21,98 @@ const Especialidades = () => {
     {
       icon: Syringe,
       title: "Medicina Ocupacional",
-      description:
-        "Exámenes médicos ocupacionales con más de 13 años de experiencia. Servicio ágil y seguro conforme a normativas de salud y seguridad laboral.",
+      description: "Exámenes médicos ocupacionales con más de 13 años de experiencia.",
+      fullDescription: "Evaluaciones médicas laborales, exámenes ocupacionales y programas de salud empresarial. Servicio ágil y seguro conforme a normativas de salud y seguridad laboral.",
+      objectives: "Evaluar la aptitud del trabajador para el puesto de trabajo y prevenir enfermedades ocupacionales.",
+      responsible: "Médico Ocupacional certificado",
     },
     {
-      icon: Stethoscope,
-      title: "Consulta Médica General",
-      description:
-        "Atención primaria integral para toda la familia. Consultas preventivas, diagnóstico y tratamiento de enfermedades comunes.",
+      icon: Ear,
+      title: "Audiometría",
+      description: "Evaluación del nivel de audición mediante el uso de un audiómetro en cabina.",
+      fullDescription: "Evaluación del nivel de audición mediante el uso de un audiómetro en cabina insonorizada.",
+      objectives: "Detectar pérdida auditiva y prevenir afecciones ocupacionales por exposición al ruido.",
+      responsible: "Lic. Enfermería, Técnico en Audiometría",
     },
     {
-      icon: Brain,
-      title: "Psicología",
-      description:
-        "Atención psicológica profesional para el bienestar mental y emocional. Evaluaciones y terapias personalizadas.",
+      icon: Activity,
+      title: "Espirometría",
+      description: "Prueba de función pulmonar que mide la capacidad respiratoria.",
+      fullDescription: "Prueba de función pulmonar que mide la capacidad respiratoria mediante un espirómetro.",
+      objectives: "Identificar enfermedades respiratorias como asma, Enfermedad Pulmonar Obstructiva Crónica o restricción ventilatoria.",
+      responsible: "Lic. Enfermería, Técnico en Espirometría",
     },
     {
       icon: Heart,
-      title: "Odontología",
-      description:
-        "Cuidado integral de la salud bucal. Tratamientos preventivos, restaurativos y estéticos con tecnología moderna.",
+      title: "Electrocardiograma",
+      description: "Registro de la actividad eléctrica del corazón a través de electrodos.",
+      fullDescription: "Registro de la actividad eléctrica del corazón a través de electrodos colocados en el pecho.",
+      objectives: "Evaluar el estado del sistema cardiovascular y detectar arritmias o cardiopatías.",
+      responsible: "Médico Cardiólogo",
     },
     {
       icon: Microscope,
       title: "Laboratorio Clínico Automatizado",
-      description:
-        "Análisis clínicos completos con tecnología automatizada de última generación. Resultados rápidos, precisos y confiables.",
-    },
-    {
-      icon: Activity,
-      title: "Radiología Digital",
-      description:
-        "Estudios radiológicos con tecnología digital de alta resolución. Diagnóstico por imágenes preciso y seguro.",
+      description: "Análisis de muestras biológicas para diagnóstico clínico.",
+      fullDescription: "Análisis de muestras biológicas (sangre, orina, heces) para diagnóstico clínico con equipamiento automatizado de última generación.",
+      objectives: "Obtener resultados objetivos que permitan un diagnóstico médico adecuado y seguimiento terapéutico.",
+      responsible: "Biólogo / Técnico Laboratorista",
     },
     {
       icon: Eye,
-      title: "Óptica",
-      description:
-        "Evaluación visual completa y dispensación de lentes oftálmicos. Asesoría personalizada para el cuidado de tu visión.",
+      title: "Oftalmología",
+      description: "Evaluación y tratamiento de patologías oculares.",
+      fullDescription: "Evaluación completa de la salud visual y tratamiento de patologías oculares con equipamiento especializado.",
+      objectives: "Detectar y corregir problemas visuales como miopía, astigmatismo o cataratas.",
+      responsible: "Médico Oftalmólogo",
+    },
+    {
+      icon: Heart,
+      title: "Odontología",
+      description: "Atención de la salud bucal mediante prevención, diagnóstico y tratamiento.",
+      fullDescription: "Atención integral de la salud bucal mediante prevención, diagnóstico y tratamiento odontológico.",
+      objectives: "Mejorar la salud dental del paciente y prevenir enfermedades bucales.",
+      responsible: "Cirujano Dentista",
+    },
+    {
+      icon: Brain,
+      title: "Psicología",
+      description: "Evaluación y apoyo psicológico individual y grupal.",
+      fullDescription: "Evaluación psicológica y apoyo terapéutico individual y grupal para el bienestar emocional.",
+      objectives: "Promover la salud mental y el bienestar emocional del paciente.",
+      responsible: "Psicólogo Clínico",
+    },
+    {
+      icon: Stethoscope,
+      title: "Medicina General",
+      description: "Atención médica integral de primer contacto.",
+      fullDescription: "Atención médica integral de primer contacto para toda la familia. Consultas preventivas y tratamiento de enfermedades comunes.",
+      objectives: "Diagnosticar y tratar afecciones comunes, y derivar a especialidades si es necesario.",
+      responsible: "Médico General",
+    },
+    {
+      icon: Activity,
+      title: "Rayos X Digital",
+      description: "Estudio de imágenes del cuerpo mediante radiación ionizante.",
+      fullDescription: "Estudio de imágenes radiográficas digitales del cuerpo para apoyo diagnóstico con baja radiación.",
+      objectives: "Apoyar el diagnóstico clínico a través de imágenes radiográficas de alta resolución.",
+      responsible: "Técnico en Radiología",
+    },
+    {
+      icon: Activity,
+      title: "Ecografía",
+      description: "Estudio de órganos y tejidos mediante ultrasonido.",
+      fullDescription: "Estudio de órganos internos y tejidos mediante ultrasonido de alta resolución.",
+      objectives: "Diagnosticar afecciones internas en abdomen, pelvis, mama, entre otros.",
+      responsible: "Médico Ecografista",
     },
     {
       icon: Pill,
       title: "Farmacia",
-      description:
-        "Dispensación de medicamentos de calidad. Asesoría farmacéutica profesional y seguimiento de tratamientos.",
-    },
-    {
-      icon: Heart,
-      title: "Cardiología",
-      description:
-        "Diagnóstico, tratamiento y prevención de enfermedades cardiovasculares. Electrocardiogramas y evaluaciones especializadas.",
-    },
-    {
-      icon: Brain,
-      title: "Neurología",
-      description:
-        "Evaluación y tratamiento de trastornos del sistema nervioso. Atención especializada con equipo calificado.",
-    },
-    {
-      icon: Bone,
-      title: "Traumatología",
-      description:
-        "Diagnóstico y tratamiento de lesiones del sistema musculoesquelético. Atención profesional y rehabilitación.",
-    },
-    {
-      icon: Droplets,
-      title: "Otras Especialidades Médicas",
-      description:
-        "Contamos con diversos especialistas médicos para atender todas tus necesidades de salud de manera integral.",
+      description: "Dispensación de medicamentos de calidad.",
+      fullDescription: "Dispensación de medicamentos de calidad con asesoría farmacéutica profesional.",
+      objectives: "Proveer medicamentos seguros y brindar orientación farmacológica al paciente.",
+      responsible: "Químico Farmacéutico",
     },
   ];
 
