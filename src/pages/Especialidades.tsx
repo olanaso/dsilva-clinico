@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Heart,
   Stethoscope,
@@ -11,12 +12,16 @@ import {
   Droplets,
   Activity,
   Syringe,
+  Search,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SpecialtyCard from "@/components/SpecialtyCard";
+import { Input } from "@/components/ui/input";
 
 const Especialidades = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const specialties = [
     {
       icon: Syringe,
@@ -116,6 +121,17 @@ const Especialidades = () => {
     },
   ];
 
+  // Filtrar especialidades basado en el término de búsqueda
+  const filteredSpecialties = specialties.filter((specialty) => {
+    const search = searchTerm.toLowerCase();
+    return (
+      specialty.title.toLowerCase().includes(search) ||
+      specialty.description.toLowerCase().includes(search) ||
+      specialty.fullDescription.toLowerCase().includes(search) ||
+      specialty.objectives.toLowerCase().includes(search)
+    );
+  });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -135,16 +151,47 @@ const Especialidades = () => {
         </div>
       </section>
 
+      {/* Buscador */}
+      <section className="py-8 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Buscar por especialidad, enfermedad o síntoma..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 h-12 text-base"
+              />
+            </div>
+            {searchTerm && (
+              <p className="text-sm text-muted-foreground mt-2">
+                {filteredSpecialties.length} {filteredSpecialties.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Specialties Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {specialties.map((specialty, index) => (
+          {filteredSpecialties.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">
+                No se encontraron especialidades que coincidan con tu búsqueda
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredSpecialties.map((specialty, index) => (
               <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
                 <SpecialtyCard {...specialty} />
               </div>
             ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
