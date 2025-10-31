@@ -11,6 +11,7 @@ import Contacto from "./pages/Contacto";
 import Terminos from "./pages/Terminos";
 import Privacidad from "./pages/Privacidad";
 import ResultadosOnline from "./pages/ResultadosOnline";
+import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/especialidades" element={<Especialidades />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
           <Route path="/terminos" element={<Terminos />} />
           <Route path="/privacidad" element={<Privacidad />} />
           <Route path="/resultados-online" element={<ResultadosOnline />} />
