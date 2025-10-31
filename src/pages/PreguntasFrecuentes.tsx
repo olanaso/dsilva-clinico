@@ -25,7 +25,7 @@ const PreguntasFrecuentes = () => {
         },
         {
           question: "¿Necesito cita previa para ser atendido?",
-          answer: "Para exámenes ocupacionales y procedimientos específicos recomendamos agendar cita previa. Sin embargo, también atendemos casos de emergencia sin cita. Puede agendar su cita llamando al 929 312 370 o a través de nuestro WhatsApp."
+          answer: "Para exámenes ocupacionales y procedimientos específicos recomendamos agendar cita previa. Sin embargo, también atendemos casos de emergencia sin cita. Puede agendar su cita llamando al +51 929 312 370 o a través de nuestro WhatsApp."
         }
       ]
     },
@@ -72,7 +72,7 @@ const PreguntasFrecuentes = () => {
         },
         {
           question: "¿Cuánto cuesta un examen médico ocupacional?",
-          answer: "El costo varía según el tipo de examen y los análisis específicos requeridos por cada puesto de trabajo. Le recomendamos contactarnos al 929 312 370 o vía WhatsApp para solicitar una cotización detallada según sus necesidades específicas."
+          answer: "El costo varía según el tipo de examen y los análisis específicos requeridos por cada puesto de trabajo. Le recomendamos contactarnos al +51 929 312 370 o vía WhatsApp para solicitar una cotización detallada según sus necesidades específicas."
         },
         {
           question: "¿Trabajan con seguros médicos?",
@@ -102,7 +102,7 @@ const PreguntasFrecuentes = () => {
         },
         {
           question: "¿Cómo puedo llegar a sus instalaciones?",
-          answer: "Nuestras sedes están ubicadas en zonas de fácil acceso. Para indicaciones específicas o coordinación de visitas, puede contactarnos al 929 312 370 o escribirnos a administracion@dsilvapoliclinico.com y con gusto le brindaremos las referencias necesarias."
+          answer: "Nuestras sedes están ubicadas en zonas de fácil acceso. Para indicaciones específicas o coordinación de visitas, puede contactarnos al +51 929 312 370 o escribirnos a administracion@dsilvapoliclinico.com y con gusto le brindaremos las referencias necesarias."
         }
       ]
     }
@@ -178,7 +178,7 @@ const PreguntasFrecuentes = () => {
                   >
                     <MessageCircle className="h-6 w-6 text-primary" />
                     <span className="font-semibold">WhatsApp</span>
-                    <span className="text-xs text-muted-foreground">929 312 370</span>
+                    <span className="text-xs text-muted-foreground">+51 929 312 370</span>
                   </Button>
                   
                   <Button
@@ -188,7 +188,7 @@ const PreguntasFrecuentes = () => {
                   >
                     <Phone className="h-6 w-6 text-primary" />
                     <span className="font-semibold">Llámanos</span>
-                    <span className="text-xs text-muted-foreground">929 312 370</span>
+                    <span className="text-xs text-muted-foreground">+51 929 312 370</span>
                   </Button>
                   
                   <Button
