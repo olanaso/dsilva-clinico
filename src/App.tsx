@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import Nosotros from "./pages/Nosotros";
 import Especialidades from "./pages/Especialidades";
+import ExamenesOcupacionales from "./pages/ExamenesOcupacionales";
 import Contacto from "./pages/Contacto";
 import Terminos from "./pages/Terminos";
 import Privacidad from "./pages/Privacidad";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/especialidades" element={<Especialidades />} />
+          <Route path="/examenes-ocupacionales" element={<ExamenesOcupacionales />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
           <Route path="/terminos" element={<Terminos />} />
