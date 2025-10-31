@@ -17,6 +17,7 @@ interface SpecialtyCardProps {
   fullDescription?: string;
   objectives?: string;
   responsible?: string;
+  image?: string;
 }
 
 const SpecialtyCard = ({ 
@@ -25,16 +26,35 @@ const SpecialtyCard = ({
   description, 
   fullDescription, 
   objectives, 
-  responsible 
+  responsible,
+  image 
 }: SpecialtyCardProps) => {
   return (
     <Dialog>
       <Card className="group relative h-full bg-gradient-card hover:shadow-hover transition-all duration-300 hover:-translate-y-2 overflow-hidden border-border hover:border-secondary/50">
         <div className="absolute inset-0 bg-gradient-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-        <CardHeader className="space-y-4 relative z-10">
-          <div className="w-16 h-16 rounded-xl bg-gradient-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow">
-            <Icon className="h-8 w-8 text-secondary-foreground" />
+        
+        {/* Image Section */}
+        {image && (
+          <div className="relative h-48 overflow-hidden">
+            <img 
+              src={image} 
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-gradient-secondary flex items-center justify-center shadow-glow">
+              <Icon className="h-6 w-6 text-secondary-foreground" />
+            </div>
           </div>
+        )}
+        
+        <CardHeader className="space-y-4 relative z-10">
+          {!image && (
+            <div className="w-16 h-16 rounded-xl bg-gradient-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow">
+              <Icon className="h-8 w-8 text-secondary-foreground" />
+            </div>
+          )}
           <CardTitle className="font-display text-2xl font-bold">{title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 relative z-10">
@@ -49,6 +69,16 @@ const SpecialtyCard = ({
 
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
+          {image && (
+            <div className="relative h-64 -mx-6 -mt-6 mb-6 overflow-hidden rounded-t-lg">
+              <img 
+                src={image} 
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+            </div>
+          )}
           <div className="w-16 h-16 rounded-xl bg-gradient-secondary flex items-center justify-center mb-4 shadow-glow">
             <Icon className="h-8 w-8 text-secondary-foreground" />
           </div>

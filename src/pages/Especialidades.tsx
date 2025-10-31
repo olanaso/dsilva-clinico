@@ -19,6 +19,20 @@ import Footer from "@/components/Footer";
 import SpecialtyCard from "@/components/SpecialtyCard";
 import { Input } from "@/components/ui/input";
 
+// Import specialty images
+import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jpg";
+import audiometriaImg from "@/assets/specialties/audiometria.jpg";
+import espirometriaImg from "@/assets/specialties/espirometria.jpg";
+import electrocardiogramaImg from "@/assets/specialties/electrocardiograma.jpg";
+import laboratorioImg from "@/assets/specialties/laboratorio.jpg";
+import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
+import odontologiaImg from "@/assets/specialties/odontologia.jpg";
+import psicologiaImg from "@/assets/specialties/psicologia.jpg";
+import medicinaGeneralImg from "@/assets/specialties/medicina-general.jpg";
+import rayosXImg from "@/assets/specialties/rayos-x.jpg";
+import ecografiaImg from "@/assets/specialties/ecografia.jpg";
+import farmaciaImg from "@/assets/specialties/farmacia.jpg";
+
 const Especialidades = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -31,6 +45,7 @@ const Especialidades = () => {
       objectives: "Evaluar la aptitud del trabajador para el puesto de trabajo y prevenir enfermedades ocupacionales.",
       responsible: "Médico Ocupacional certificado",
       organs: ["cuerpo completo", "sistema general"],
+      image: medicinaOcupacionalImg,
     },
     {
       icon: Ear,
@@ -40,6 +55,7 @@ const Especialidades = () => {
       objectives: "Detectar pérdida auditiva y prevenir afecciones ocupacionales por exposición al ruido.",
       responsible: "Lic. Enfermería, Técnico en Audiometría",
       organs: ["oídos", "oído", "sistema auditivo"],
+      image: audiometriaImg,
     },
     {
       icon: Activity,
@@ -49,6 +65,7 @@ const Especialidades = () => {
       objectives: "Identificar enfermedades respiratorias como asma, Enfermedad Pulmonar Obstructiva Crónica o restricción ventilatoria.",
       responsible: "Lic. Enfermería, Técnico en Espirometría",
       organs: ["pulmones", "sistema respiratorio", "vías respiratorias", "bronquios"],
+      image: espirometriaImg,
     },
     {
       icon: Heart,
@@ -58,6 +75,7 @@ const Especialidades = () => {
       objectives: "Evaluar el estado del sistema cardiovascular y detectar arritmias o cardiopatías.",
       responsible: "Médico Cardiólogo",
       organs: ["corazón", "sistema cardiovascular", "arterias", "venas"],
+      image: electrocardiogramaImg,
     },
     {
       icon: Microscope,
@@ -67,6 +85,7 @@ const Especialidades = () => {
       objectives: "Obtener resultados objetivos que permitan un diagnóstico médico adecuado y seguimiento terapéutico.",
       responsible: "Biólogo / Técnico Laboratorista",
       organs: ["sangre", "orina", "sistema urinario", "riñones", "hígado", "análisis general"],
+      image: laboratorioImg,
     },
     {
       icon: Eye,
@@ -76,6 +95,7 @@ const Especialidades = () => {
       objectives: "Detectar y corregir problemas visuales como miopía, astigmatismo o cataratas.",
       responsible: "Médico Oftalmólogo",
       organs: ["ojos", "sistema visual", "vista", "retina", "córnea"],
+      image: oftalmologiaImg,
     },
     {
       icon: Heart,
@@ -85,6 +105,7 @@ const Especialidades = () => {
       objectives: "Mejorar la salud dental del paciente y prevenir enfermedades bucales.",
       responsible: "Cirujano Dentista",
       organs: ["dientes", "boca", "encías", "mandíbula", "sistema dental"],
+      image: odontologiaImg,
     },
     {
       icon: Brain,
@@ -94,6 +115,7 @@ const Especialidades = () => {
       objectives: "Promover la salud mental y el bienestar emocional del paciente.",
       responsible: "Psicólogo Clínico",
       organs: ["cerebro", "mente", "sistema nervioso", "salud mental", "emociones"],
+      image: psicologiaImg,
     },
     {
       icon: Stethoscope,
@@ -103,6 +125,7 @@ const Especialidades = () => {
       objectives: "Diagnosticar y tratar afecciones comunes, y derivar a especialidades si es necesario.",
       responsible: "Médico General",
       organs: ["cuerpo completo", "todo el cuerpo", "sistema general"],
+      image: medicinaGeneralImg,
     },
     {
       icon: Activity,
@@ -112,6 +135,7 @@ const Especialidades = () => {
       objectives: "Apoyar el diagnóstico clínico a través de imágenes radiográficas de alta resolución.",
       responsible: "Técnico en Radiología",
       organs: ["huesos", "sistema óseo", "esqueleto", "columna", "articulaciones", "tórax"],
+      image: rayosXImg,
     },
     {
       icon: Activity,
@@ -121,6 +145,7 @@ const Especialidades = () => {
       objectives: "Diagnosticar afecciones internas en abdomen, pelvis, mama, entre otros.",
       responsible: "Médico Ecografista",
       organs: ["abdomen", "pelvis", "útero", "ovarios", "hígado", "riñones", "vesícula", "mama", "tiroides", "próstata"],
+      image: ecografiaImg,
     },
     {
       icon: Pill,
@@ -130,6 +155,7 @@ const Especialidades = () => {
       objectives: "Proveer medicamentos seguros y brindar orientación farmacológica al paciente.",
       responsible: "Químico Farmacéutico",
       organs: ["medicamentos", "tratamiento general"],
+      image: farmaciaImg,
     },
   ];
 
