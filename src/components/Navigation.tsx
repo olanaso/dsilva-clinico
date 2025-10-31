@@ -47,7 +47,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -75,7 +75,7 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -84,7 +84,7 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
+          <div className="lg:hidden py-4 animate-fade-in">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <Link

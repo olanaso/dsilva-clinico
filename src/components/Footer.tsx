@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
-                <div>
+                <div className="break-all">
                   <a href="mailto:administracion@dsilvapoliclinico.com" className="hover:text-secondary transition-colors">
                     administracion@dsilvapoliclinico.com
                   </a>
