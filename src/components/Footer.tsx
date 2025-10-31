@@ -127,8 +127,19 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-sm opacity-80">
-          <p>&copy; {new Date().getFullYear()} Policlínico Ocupacional Challhuahuacho SAC. Todos los derechos reservados.</p>
+        <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-sm">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-2">
+            <Link to="/terminos" className="hover:text-secondary transition-colors">
+              Términos y Condiciones
+            </Link>
+            <span className="hidden md:inline opacity-60">|</span>
+            <Link to="/privacidad" className="hover:text-secondary transition-colors">
+              Política de Privacidad
+            </Link>
+          </div>
+          <p className="opacity-80">
+            &copy; {new Date().getFullYear()} Policlínico Ocupacional Challhuahuacho SAC. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>

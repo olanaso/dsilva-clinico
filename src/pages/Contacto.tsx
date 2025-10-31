@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import LocationMap from "@/components/LocationMap";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "El nombre es obligatorio").max(100, "El nombre debe tener menos de 100 caracteres"),
+  email: z.string().trim().email("Email inválido").max(255, "El email debe tener menos de 255 caracteres"),
+  phone: z.string().trim().min(1, "El teléfono es obligatorio").max(20, "El teléfono debe tener menos de 20 caracteres"),
+  message: z.string().trim().min(1, "El mensaje es obligatorio").max(1000, "El mensaje debe tener menos de 1000 caracteres"),
+  acceptTerms: z.boolean().refine(val => val === true, "Debes aceptar los términos y condiciones"),
+});
 
 const Contacto = () => {
   const { toast } = useToast();
@@ -16,15 +27,38 @@ const Contacto = () => {
     email: "",
     phone: "",
     message: "",
+    acceptTerms: false,
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validar con zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((error) => {
+        if (error.path[0]) {
+          fieldErrors[error.path[0].toString()] = error.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: "Error en el formulario",
+        description: "Por favor, corrige los errores antes de enviar.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setErrors({});
     toast({
       title: "Mensaje enviado",
       description: "Nos pondremos en contacto contigo pronto.",
     });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", message: "", acceptTerms: false });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,6 +66,21 @@ const Contacto = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    // Limpiar error del campo cuando el usuario empieza a escribir
+    if (errors[e.target.name]) {
+      setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+    }
+  };
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setFormData((prev) => ({
+      ...prev,
+      acceptTerms: checked,
+    }));
+    // Limpiar error del checkbox cuando se marca
+    if (errors.acceptTerms) {
+      setErrors((prev) => ({ ...prev, acceptTerms: "" }));
+    }
   };
 
   const contactInfo = [
@@ -161,7 +210,11 @@ const Contacto = () => {
                       onChange={handleChange}
                       placeholder="Juan Pérez"
                       required
+                      className={errors.name ? "border-destructive" : ""}
                     />
+                    {errors.name && (
+                      <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="email" className="text-sm font-medium mb-2 block">
@@ -175,7 +228,11 @@ const Contacto = () => {
                       onChange={handleChange}
                       placeholder="juan@ejemplo.com"
                       required
+                      className={errors.email ? "border-destructive" : ""}
                     />
+                    {errors.email && (
+                      <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="phone" className="text-sm font-medium mb-2 block">
@@ -189,7 +246,11 @@ const Contacto = () => {
                       onChange={handleChange}
                       placeholder="+51 987 654 321"
                       required
+                      className={errors.phone ? "border-destructive" : ""}
                     />
+                    {errors.phone && (
+                      <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="message" className="text-sm font-medium mb-2 block">
@@ -203,9 +264,53 @@ const Contacto = () => {
                       placeholder="Describe tu consulta o solicitud..."
                       rows={5}
                       required
+                      className={errors.message ? "border-destructive" : ""}
                     />
+                    {errors.message && (
+                      <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                    )}
                   </div>
-                  <Button type="submit" className="w-full bg-gradient-hero hover:opacity-90 shadow-medical">
+                  
+                  {/* Términos y Condiciones */}
+                  <div className="flex items-start space-x-3 pt-2">
+                    <Checkbox
+                      id="acceptTerms"
+                      checked={formData.acceptTerms}
+                      onCheckedChange={handleCheckboxChange}
+                      className={errors.acceptTerms ? "border-destructive" : ""}
+                    />
+                    <label
+                      htmlFor="acceptTerms"
+                      className="text-sm leading-relaxed cursor-pointer"
+                    >
+                      Acepto los{" "}
+                      <Link
+                        to="/terminos"
+                        className="text-primary hover:underline font-medium"
+                        target="_blank"
+                      >
+                        Términos y Condiciones
+                      </Link>{" "}
+                      y la{" "}
+                      <Link
+                        to="/privacidad"
+                        className="text-primary hover:underline font-medium"
+                        target="_blank"
+                      >
+                        Política de Privacidad
+                      </Link>{" "}
+                      *
+                    </label>
+                  </div>
+                  {errors.acceptTerms && (
+                    <p className="text-sm text-destructive">{errors.acceptTerms}</p>
+                  )}
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-hero hover:opacity-90 shadow-medical"
+                    disabled={!formData.acceptTerms}
+                  >
                     <Send className="mr-2 h-4 w-4" />
                     Enviar Mensaje
                   </Button>
