@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import LocationMap from "@/components/LocationMap";
 
 const Contacto = () => {
   const { toast } = useToast();
@@ -217,30 +218,37 @@ const Contacto = () => {
               <div>
                 <h3 className="font-display text-2xl font-bold mb-4">Ubicación</h3>
                 <p className="text-muted-foreground mb-6">
-                  Visítanos en nuestra moderna instalación, diseñada para brindarte comodidad y la mejor
-                  atención médica.
+                  Haz clic en el mapa para abrir la ubicación en Google Maps
                 </p>
               </div>
-              <div className="bg-muted rounded-xl overflow-hidden shadow-card-custom p-8">
-                <div className="space-y-6">
-                  <div className="text-center pb-4 border-b border-border">
-                    <MapPin className="h-12 w-12 text-secondary mx-auto mb-3" />
-                    <h4 className="font-display font-semibold text-xl mb-1">Policlínico Ocupacional Challhuahuacho SAC</h4>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="bg-background p-4 rounded-lg">
-                      <p className="font-semibold text-secondary mb-2">Sede Challhuahuacho</p>
-                      <p className="text-muted-foreground text-sm">Av. Sulfubamba S/N</p>
-                      <p className="text-muted-foreground text-sm">Challhuahuacho</p>
-                    </div>
-                    
-                    <div className="bg-background p-4 rounded-lg">
-                      <p className="font-semibold text-secondary mb-2">Sede Cusco</p>
-                      <p className="text-muted-foreground text-sm">Av. Túpac Amaru O-5</p>
-                      <p className="text-muted-foreground text-sm">Wanchaq - Cusco</p>
-                    </div>
-                  </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-display font-semibold text-lg mb-3 flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-primary" />
+                    Sede Challhuahuacho
+                  </h4>
+                  <LocationMap
+                    latitude={-14.2847}
+                    longitude={-72.8389}
+                    locationName="Sede Challhuahuacho"
+                    address="Av. Sulfubamba S/N, Challhuahuacho"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2">Av. Sulfubamba S/N, Challhuahuacho</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-display font-semibold text-lg mb-3 flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-primary" />
+                    Sede Cusco
+                  </h4>
+                  <LocationMap
+                    latitude={-13.5200}
+                    longitude={-71.9678}
+                    locationName="Sede Cusco"
+                    address="Av. Túpac Amaru O-5, Wanchaq - Cusco"
+                  />
+                  <p className="text-sm text-muted-foreground mt-2">Av. Túpac Amaru O-5, Wanchaq - Cusco</p>
                 </div>
               </div>
             </div>
