@@ -4,6 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { 
   ClipboardCheck, 
   UserCheck, 
   Calendar, 
@@ -21,38 +28,48 @@ import {
   Hotel,
   Code,
   Wrench,
-  MessageCircle
+  MessageCircle,
+  Award,
+  Clock
 } from "lucide-react";
+import preOcupacionalImg from "@/assets/exams/pre-ocupacional.jpg";
+import periodicoImg from "@/assets/exams/periodico.jpg";
+import retiroImg from "@/assets/exams/retiro.jpg";
+import reintegroImg from "@/assets/exams/reintegro.jpg";
 
 const ExamenesOcupacionales = () => {
   const mainExams = [
     {
       icon: UserCheck,
-      title: "Examen Pre-Ocupacional",
+      title: "Examen Médico Ocupacional De Reincorporación Laboral",
       subtitle: "Ingreso al Trabajo",
-      description: "Evaluación médica obligatoria antes de iniciar actividades laborales. Determina la aptitud del trabajador para el puesto específico al que postula.",
-      includes: ["Evaluación médica general", "Análisis de laboratorio", "Exámenes auxiliares según puesto", "Certificado de aptitud"]
+      description: "Se realiza cuando un colaborador de la empresa se reincorpora a la organización tras haber sufrido alguna incapacidad temporal dentro del trabajo.",
+      includes: ["Evaluación médica general", "Análisis de laboratorio", "Exámenes auxiliares según puesto", "Certificado de aptitud"],
+      image: preOcupacionalImg
     },
     {
       icon: Calendar,
-      title: "Examen Periódico",
-      subtitle: "Anual o Semestral",
-      description: "Evaluación médica programada durante la relación laboral para detectar precozmente daños a la salud ocasionados por la exposición a factores de riesgo.",
-      includes: ["Control médico anual", "Evaluaciones específicas", "Monitoreo de salud ocupacional", "Actualización de historia clínica"]
+      title: "Examen Médico Ocupacional De Cambio De Puesto En El Trabajo",
+      subtitle: "Cambio de Puesto",
+      description: "Se realiza cuando el colaborador experimenta cambios en sus responsabilidades o área, incluyendo la adición de nuevas tareas que implican un nivel de riesgo mayor.",
+      includes: ["Control médico anual", "Evaluaciones específicas", "Monitoreo de salud ocupacional", "Actualización de historia clínica"],
+      image: periodicoImg
     },
     {
       icon: UserX,
-      title: "Examen de Retiro",
+      title: "Examen Médico Ocupacional De Retiro",
       subtitle: "Cese Laboral",
-      description: "Evaluación obligatoria al término de la relación laboral para identificar enfermedades ocupacionales que pudieran haberse desarrollado durante el trabajo.",
-      includes: ["Evaluación médica final", "Diagnóstico de salud al cese", "Certificado de retiro", "Registro en historia ocupacional"]
+      description: "Se realiza unos días antes de concluir el contrato laboral con su empresa para detectar posibles enfermedades relacionadas con las actividades laborales.",
+      includes: ["Evaluación médica final", "Diagnóstico de salud al cese", "Certificado de retiro", "Registro en historia ocupacional"],
+      image: retiroImg
     },
     {
       icon: RefreshCw,
-      title: "Examen de Reintegro",
-      subtitle: "Retorno al Trabajo",
-      description: "Evaluación para trabajadores que regresan después de descanso médico prolongado, accidente o enfermedad, para verificar su capacidad de retomar funciones.",
-      includes: ["Evaluación de capacidad funcional", "Valoración de restricciones", "Recomendaciones médicas", "Plan de reincorporación"]
+      title: "Examen Médico Ocupacional Periódico",
+      subtitle: "Evaluación Anual",
+      description: "Evaluación médica programada durante la relación laboral para detectar precozmente daños a la salud ocasionados por la exposición a factores de riesgo.",
+      includes: ["Evaluación de capacidad funcional", "Valoración de restricciones", "Recomendaciones médicas", "Plan de reincorporación"],
+      image: reintegroImg
     }
   ];
 
@@ -157,51 +174,65 @@ const ExamenesOcupacionales = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {mainExams.map((exam, index) => {
-              const Icon = exam.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="group hover:shadow-2xl transition-all duration-300 border-l-4 border-l-primary hover:-translate-y-2 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="p-4 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl group-hover:scale-110 transition-transform">
-                        <Icon className="h-8 w-8 text-primary" />
+          <div className="max-w-6xl mx-auto px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {mainExams.map((exam, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <Card className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 hover:-translate-y-2 overflow-hidden h-full">
+                      {/* Image Section */}
+                      <div className="relative h-64 overflow-hidden">
+                        <img 
+                          src={exam.image} 
+                          alt={exam.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {/* Badges Overlay */}
+                        <div className="absolute top-4 right-4 flex flex-col gap-2">
+                          <Badge className="bg-destructive text-destructive-foreground shadow-lg">
+                            RESULTADOS EL MISMO DÍA
+                          </Badge>
+                          <Badge className="bg-yellow-500 text-yellow-950 shadow-lg flex items-center gap-1">
+                            <Award className="h-3 w-3" />
+                            100% CALIDAD
+                          </Badge>
+                          <Badge className="bg-background text-foreground shadow-lg flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            +10 AÑOS DE EXPERIENCIA
+                          </Badge>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl md:text-2xl mb-2 group-hover:text-primary transition-colors">
+
+                      {/* Content Section */}
+                      <CardHeader>
+                        <CardTitle className="text-lg md:text-xl mb-2 group-hover:text-primary transition-colors text-center">
                           {exam.title}
                         </CardTitle>
-                        <CardDescription className="text-base">
-                          {exam.subtitle}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {exam.description}
-                    </p>
-                    <div className="space-y-3 bg-muted/30 rounded-lg p-4">
-                      <p className="text-sm font-semibold text-foreground">
-                        Incluye:
-                      </p>
-                      <ul className="text-sm text-muted-foreground space-y-2">
-                        {exam.includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <ClipboardCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                      </CardHeader>
+                      <CardContent className="flex flex-col gap-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed text-center min-h-[80px]">
+                          {exam.description}
+                        </p>
+                        <Button 
+                          className="w-full"
+                          onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+                        >
+                          Cotiza aquí
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </section>
