@@ -30,6 +30,7 @@ const Especialidades = () => {
       fullDescription: "Evaluaciones médicas laborales, exámenes ocupacionales y programas de salud empresarial. Servicio ágil y seguro conforme a normativas de salud y seguridad laboral.",
       objectives: "Evaluar la aptitud del trabajador para el puesto de trabajo y prevenir enfermedades ocupacionales.",
       responsible: "Médico Ocupacional certificado",
+      organs: ["cuerpo completo", "sistema general"],
     },
     {
       icon: Ear,
@@ -38,6 +39,7 @@ const Especialidades = () => {
       fullDescription: "Evaluación del nivel de audición mediante el uso de un audiómetro en cabina insonorizada.",
       objectives: "Detectar pérdida auditiva y prevenir afecciones ocupacionales por exposición al ruido.",
       responsible: "Lic. Enfermería, Técnico en Audiometría",
+      organs: ["oídos", "oído", "sistema auditivo"],
     },
     {
       icon: Activity,
@@ -46,6 +48,7 @@ const Especialidades = () => {
       fullDescription: "Prueba de función pulmonar que mide la capacidad respiratoria mediante un espirómetro.",
       objectives: "Identificar enfermedades respiratorias como asma, Enfermedad Pulmonar Obstructiva Crónica o restricción ventilatoria.",
       responsible: "Lic. Enfermería, Técnico en Espirometría",
+      organs: ["pulmones", "sistema respiratorio", "vías respiratorias", "bronquios"],
     },
     {
       icon: Heart,
@@ -54,6 +57,7 @@ const Especialidades = () => {
       fullDescription: "Registro de la actividad eléctrica del corazón a través de electrodos colocados en el pecho.",
       objectives: "Evaluar el estado del sistema cardiovascular y detectar arritmias o cardiopatías.",
       responsible: "Médico Cardiólogo",
+      organs: ["corazón", "sistema cardiovascular", "arterias", "venas"],
     },
     {
       icon: Microscope,
@@ -62,6 +66,7 @@ const Especialidades = () => {
       fullDescription: "Análisis de muestras biológicas (sangre, orina, heces) para diagnóstico clínico con equipamiento automatizado de última generación.",
       objectives: "Obtener resultados objetivos que permitan un diagnóstico médico adecuado y seguimiento terapéutico.",
       responsible: "Biólogo / Técnico Laboratorista",
+      organs: ["sangre", "orina", "sistema urinario", "riñones", "hígado", "análisis general"],
     },
     {
       icon: Eye,
@@ -70,6 +75,7 @@ const Especialidades = () => {
       fullDescription: "Evaluación completa de la salud visual y tratamiento de patologías oculares con equipamiento especializado.",
       objectives: "Detectar y corregir problemas visuales como miopía, astigmatismo o cataratas.",
       responsible: "Médico Oftalmólogo",
+      organs: ["ojos", "sistema visual", "vista", "retina", "córnea"],
     },
     {
       icon: Heart,
@@ -78,6 +84,7 @@ const Especialidades = () => {
       fullDescription: "Atención integral de la salud bucal mediante prevención, diagnóstico y tratamiento odontológico.",
       objectives: "Mejorar la salud dental del paciente y prevenir enfermedades bucales.",
       responsible: "Cirujano Dentista",
+      organs: ["dientes", "boca", "encías", "mandíbula", "sistema dental"],
     },
     {
       icon: Brain,
@@ -86,6 +93,7 @@ const Especialidades = () => {
       fullDescription: "Evaluación psicológica y apoyo terapéutico individual y grupal para el bienestar emocional.",
       objectives: "Promover la salud mental y el bienestar emocional del paciente.",
       responsible: "Psicólogo Clínico",
+      organs: ["cerebro", "mente", "sistema nervioso", "salud mental", "emociones"],
     },
     {
       icon: Stethoscope,
@@ -94,6 +102,7 @@ const Especialidades = () => {
       fullDescription: "Atención médica integral de primer contacto para toda la familia. Consultas preventivas y tratamiento de enfermedades comunes.",
       objectives: "Diagnosticar y tratar afecciones comunes, y derivar a especialidades si es necesario.",
       responsible: "Médico General",
+      organs: ["cuerpo completo", "todo el cuerpo", "sistema general"],
     },
     {
       icon: Activity,
@@ -102,6 +111,7 @@ const Especialidades = () => {
       fullDescription: "Estudio de imágenes radiográficas digitales del cuerpo para apoyo diagnóstico con baja radiación.",
       objectives: "Apoyar el diagnóstico clínico a través de imágenes radiográficas de alta resolución.",
       responsible: "Técnico en Radiología",
+      organs: ["huesos", "sistema óseo", "esqueleto", "columna", "articulaciones", "tórax"],
     },
     {
       icon: Activity,
@@ -110,6 +120,7 @@ const Especialidades = () => {
       fullDescription: "Estudio de órganos internos y tejidos mediante ultrasonido de alta resolución.",
       objectives: "Diagnosticar afecciones internas en abdomen, pelvis, mama, entre otros.",
       responsible: "Médico Ecografista",
+      organs: ["abdomen", "pelvis", "útero", "ovarios", "hígado", "riñones", "vesícula", "mama", "tiroides", "próstata"],
     },
     {
       icon: Pill,
@@ -118,6 +129,7 @@ const Especialidades = () => {
       fullDescription: "Dispensación de medicamentos de calidad con asesoría farmacéutica profesional.",
       objectives: "Proveer medicamentos seguros y brindar orientación farmacológica al paciente.",
       responsible: "Químico Farmacéutico",
+      organs: ["medicamentos", "tratamiento general"],
     },
   ];
 
@@ -128,7 +140,8 @@ const Especialidades = () => {
       specialty.title.toLowerCase().includes(search) ||
       specialty.description.toLowerCase().includes(search) ||
       specialty.fullDescription.toLowerCase().includes(search) ||
-      specialty.objectives.toLowerCase().includes(search)
+      specialty.objectives.toLowerCase().includes(search) ||
+      specialty.organs.some(organ => organ.toLowerCase().includes(search))
     );
   });
 
@@ -159,7 +172,7 @@ const Especialidades = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Buscar por especialidad, enfermedad o síntoma..."
+                placeholder="Buscar por especialidad, órgano, enfermedad o síntoma..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 h-12 text-base"
