@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield } from "lucide-react";
+import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SpecialtyCard from "@/components/SpecialtyCard";
@@ -93,6 +93,12 @@ const Index = () => {
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
                 <Link to="/especialidades">Ver Especialidades</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+                <Link to="/resultados-online" className="flex items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  Resultados en Línea
+                </Link>
               </Button>
             </div>
           </div>

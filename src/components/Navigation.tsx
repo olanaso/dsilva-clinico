@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, FileText } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -59,7 +59,13 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild className="ml-4 bg-gradient-hero hover:opacity-90 shadow-medical">
+            <Button asChild variant="outline" className="ml-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground">
+              <Link to="/resultados-online" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Resultados en Línea
+              </Link>
+            </Button>
+            <Button asChild className="ml-2 bg-gradient-hero hover:opacity-90 shadow-medical">
               <Link to="/contacto">Agendar Cita</Link>
             </Button>
           </div>
@@ -92,6 +98,12 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              <Button asChild variant="outline" className="mt-2 border-secondary text-secondary">
+                <Link to="/resultados-online" onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2">
+                  <FileText className="h-4 w-4" />
+                  Resultados en Línea
+                </Link>
+              </Button>
               <Button asChild className="mt-2 bg-gradient-hero">
                 <Link to="/contacto" onClick={() => setIsOpen(false)}>
                   Agendar Cita
