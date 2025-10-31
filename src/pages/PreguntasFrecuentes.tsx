@@ -21,7 +21,7 @@ const PreguntasFrecuentes = () => {
         },
         {
           question: "¿Cuál es el horario de atención?",
-          answer: "Nuestro horario de atención es de Lunes a Viernes de 7:00 AM a 7:00 PM y Sábados de 8:00 AM a 1:00 PM. Para atención de emergencia o consultas específicas, puede contactarnos a través de nuestro WhatsApp disponible durante horarios extendidos."
+          answer: "En nuestra sede de Challhuahuacho atendemos de Lunes a Domingo de 8:00 AM a 12:00 PM y de 2:30 PM a 8:30 PM. En nuestra sede de Cusco el horario es de Lunes a Sábado de 7:00 AM a 12:00 PM y de 2:30 PM a 7:00 PM. Para emergencias y consultas, estamos disponibles vía WhatsApp al 929 312 370."
         },
         {
           question: "¿Necesito cita previa para ser atendido?",
@@ -98,11 +98,11 @@ const PreguntasFrecuentes = () => {
       questions: [
         {
           question: "¿Dónde están ubicadas sus sedes?",
-          answer: "Contamos con dos sedes estratégicamente ubicadas: Sede San Martín de Porres en Av. Alfredo Mendiola 1400, y Sede Los Olivos en Av. Las Palmeras 3481. Ambas sedes cuentan con estacionamiento y fácil acceso mediante transporte público."
+          answer: "Contamos con dos sedes estratégicamente ubicadas: Sede Challhuahuacho en Av. Sulfubamba S/N, Challhuahuacho; y Sede Cusco en Av. Túpac Amaru O-5, Wanchaq - Cusco. Ambas sedes están equipadas con tecnología moderna y personal altamente capacitado para brindarle la mejor atención."
         },
         {
-          question: "¿Tienen estacionamiento disponible?",
-          answer: "Sí, ambas sedes cuentan con estacionamiento gratuito para nuestros pacientes, facilitando su visita especialmente cuando necesita realizar ayuno o procedimientos que requieren preparación especial."
+          question: "¿Cómo puedo llegar a sus instalaciones?",
+          answer: "Nuestras sedes están ubicadas en zonas de fácil acceso. Para indicaciones específicas o coordinación de visitas, puede contactarnos al 929 312 370 o escribirnos a administracion@dsilvapoliclinico.com y con gusto le brindaremos las referencias necesarias."
         }
       ]
     }
@@ -194,11 +194,11 @@ const PreguntasFrecuentes = () => {
                   <Button
                     variant="outline"
                     className="h-auto py-4 flex flex-col gap-2"
-                    onClick={() => window.location.href = 'mailto:info@policlinicadsilva.com'}
+                    onClick={() => window.location.href = 'mailto:administracion@dsilvapoliclinico.com'}
                   >
                     <Mail className="h-6 w-6 text-primary" />
                     <span className="font-semibold">Email</span>
-                    <span className="text-xs text-muted-foreground">info@policlinicadsilva.com</span>
+                    <span className="text-xs text-muted-foreground">administracion@dsilvapoliclinico.com</span>
                   </Button>
                 </div>
               </CardContent>
