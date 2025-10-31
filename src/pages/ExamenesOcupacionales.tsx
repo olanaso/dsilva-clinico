@@ -105,17 +105,18 @@ const ExamenesOcupacionales = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/90 to-secondary text-primary-foreground pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-4">
+      <section className="relative bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
+            <Badge variant="secondary" className="mb-6 text-base px-4 py-1.5">
               Certificados Oficiales
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Exámenes Médicos Ocupacionales
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Exámenes Médicos<br />Ocupacionales
             </h1>
-            <p className="text-xl mb-8 text-primary-foreground/90">
-              Servicios especializados de medicina ocupacional cumpliendo con todas las normativas 
+            <p className="text-xl md:text-2xl mb-10 text-primary-foreground/90 max-w-3xl mx-auto">
+              Servicios especializados cumpliendo con todas las normativas 
               del Ministerio de Salud y Ministerio de Trabajo
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -123,7 +124,7 @@ const ExamenesOcupacionales = () => {
                 size="lg" 
                 variant="secondary"
                 onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                className="gap-2"
+                className="gap-2 hover-scale shadow-lg"
               >
                 <MessageCircle className="h-5 w-5" />
                 Cotizar Examen
@@ -131,7 +132,7 @@ const ExamenesOcupacionales = () => {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground"
+                className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground hover-scale"
                 onClick={() => window.location.href = '/contacto'}
               >
                 Agendar Cita
@@ -142,41 +143,56 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* Main Exams Section */}
-      <section className="py-16 bg-gradient-to-b from-background to-secondary/5">
+      <section className="py-20 bg-gradient-to-b from-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="outline" className="mb-4">
+              Exámenes Principales
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Tipos de Exámenes Ocupacionales
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Exámenes médicos ocupacionales según la fase de la relación laboral
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Evaluaciones médicas según cada fase de la relación laboral
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {mainExams.map((exam, index) => {
               const Icon = exam.icon;
               return (
-                <Card key={index} className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary">
+                <Card 
+                  key={index} 
+                  className="group hover:shadow-2xl transition-all duration-300 border-l-4 border-l-primary hover:-translate-y-2 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <CardHeader>
                     <div className="flex items-start gap-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
+                      <div className="p-4 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl group-hover:scale-110 transition-transform">
                         <Icon className="h-8 w-8 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <CardTitle className="text-xl mb-1">{exam.title}</CardTitle>
-                        <CardDescription className="text-base">{exam.subtitle}</CardDescription>
+                        <CardTitle className="text-xl md:text-2xl mb-2 group-hover:text-primary transition-colors">
+                          {exam.title}
+                        </CardTitle>
+                        <CardDescription className="text-base">
+                          {exam.subtitle}
+                        </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{exam.description}</p>
-                    <div className="space-y-2">
-                      <p className="text-sm font-semibold">Incluye:</p>
-                      <ul className="text-sm text-muted-foreground space-y-1">
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {exam.description}
+                    </p>
+                    <div className="space-y-3 bg-muted/30 rounded-lg p-4">
+                      <p className="text-sm font-semibold text-foreground">
+                        Incluye:
+                      </p>
+                      <ul className="text-sm text-muted-foreground space-y-2">
                         {exam.includes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <ClipboardCheck className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                          <li key={i} className="flex items-start gap-3">
+                            <ClipboardCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -191,13 +207,16 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* Specialized Exams Section */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-b from-secondary/5 to-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="outline" className="mb-4">
+              Evaluaciones Especializadas
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Exámenes Especializados
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Evaluaciones específicas según el tipo de riesgo ocupacional
             </p>
           </div>
@@ -206,18 +225,28 @@ const ExamenesOcupacionales = () => {
             {specializedExams.map((exam, index) => {
               const Icon = exam.icon;
               return (
-                <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card 
+                  key={index} 
+                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-background to-secondary/5 border-2 hover:border-primary/50 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon className={`h-10 w-10 ${exam.color}`} />
-                      <CardTitle className="text-lg">{exam.title}</CardTitle>
+                    <div className="flex flex-col items-center text-center gap-4 mb-2">
+                      <div className={`p-4 bg-gradient-to-br from-background to-secondary/10 rounded-2xl group-hover:scale-110 transition-transform shadow-lg`}>
+                        <Icon className={`h-12 w-12 ${exam.color}`} />
+                      </div>
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        {exam.title}
+                      </CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground">{exam.description}</p>
+                    <p className="text-sm text-muted-foreground text-center mb-4 min-h-[4rem]">
+                      {exam.description}
+                    </p>
                     <Button 
-                      variant="link" 
-                      className="px-0 mt-3"
+                      variant="ghost" 
+                      className="w-full hover:bg-primary/10 hover:text-primary"
                       onClick={() => window.open('https://wa.me/51929312370', '_blank')}
                     >
                       Solicitar cotización →
@@ -231,30 +260,40 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* Sector Exams Section */}
-      <section className="py-16 bg-gradient-to-b from-secondary/5 to-background">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="outline" className="mb-4">
+              Por Industria
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Exámenes por Sector Económico
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Evaluaciones médicas adaptadas a cada industria
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {sectorExams.map((sector, index) => {
               const Icon = sector.icon;
               return (
                 <Card 
                   key={index} 
-                  className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-primary"
+                  className="group hover:shadow-xl transition-all duration-300 cursor-pointer hover:border-primary/50 hover:-translate-y-2 bg-gradient-to-br from-background to-primary/5 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.05}s` }}
                   onClick={() => window.open('https://wa.me/51929312370', '_blank')}
                 >
-                  <CardContent className="pt-6 text-center">
-                    <Icon className="h-12 w-12 text-primary mx-auto mb-3" />
-                    <h3 className="font-semibold mb-2">{sector.title}</h3>
-                    <p className="text-xs text-muted-foreground">{sector.description}</p>
+                  <CardContent className="pt-8 pb-6 text-center">
+                    <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <Icon className="h-10 w-10 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                      {sector.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {sector.description}
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -264,73 +303,89 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-b from-secondary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl md:text-3xl mb-2">
+            <Card className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 border-2 border-primary/20 shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]" />
+              <CardHeader className="text-center relative z-10 pt-12">
+                <Badge variant="secondary" className="mb-4 mx-auto">
+                  Nuestras Ventajas
+                </Badge>
+                <CardTitle className="text-3xl md:text-4xl mb-4">
                   ¿Por qué elegir D'Silva Policlínico?
                 </CardTitle>
-                <CardDescription className="text-base">
+                <CardDescription className="text-lg">
                   Experiencia y calidad en medicina ocupacional
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+              <CardContent className="relative z-10 pb-12">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Personal Certificado</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Personal Certificado</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Médicos ocupacionales certificados por el Ministerio de Salud
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Equipos Modernos</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Equipos Modernos</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Tecnología de punta para diagnósticos precisos
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Resultados Rápidos</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Resultados Rápidos</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Entrega de certificados en 24-48 horas hábiles
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <div className="space-y-6">
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Dos Sedes Disponibles</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Dos Sedes Disponibles</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Atención en Challhuahuacho y Cusco
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Convenios Corporativos</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Convenios Corporativos</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Precios especiales para empresas y organizaciones
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="flex gap-4 group hover-scale">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <div className="h-3 w-3 rounded-full bg-primary" />
+                      </div>
                       <div>
-                        <h4 className="font-semibold mb-1">Servicio In-House</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="font-bold text-lg mb-2">Servicio In-House</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           Atención en las instalaciones de su empresa
                         </p>
                       </div>
@@ -344,32 +399,38 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-primary to-secondary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            ¿Necesitas realizar exámenes ocupacionales?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-primary-foreground/90">
-            Contáctanos para recibir una cotización personalizada según las necesidades de tu empresa
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
-              variant="secondary"
-              onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-              className="gap-2"
-            >
-              <MessageCircle className="h-5 w-5" />
-              Solicitar Cotización
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground"
-              onClick={() => window.location.href = 'tel:+51929312370'}
-            >
-              Llamar Ahora
-            </Button>
+      <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-4xl mx-auto animate-fade-in">
+            <Badge variant="secondary" className="mb-6 text-base px-4 py-1.5">
+              Estamos para ayudarte
+            </Badge>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              ¿Necesitas realizar exámenes ocupacionales?
+            </h2>
+            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-primary-foreground/90">
+              Contáctanos para recibir una cotización personalizada según las necesidades de tu empresa
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button 
+                size="lg" 
+                variant="secondary"
+                onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+                className="gap-2 hover-scale shadow-xl text-lg px-8 py-6"
+              >
+                <MessageCircle className="h-6 w-6" />
+                Solicitar Cotización
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground hover-scale shadow-xl text-lg px-8 py-6"
+                onClick={() => window.location.href = 'tel:+51929312370'}
+              >
+                Llamar Ahora
+              </Button>
+            </div>
           </div>
         </div>
       </section>
