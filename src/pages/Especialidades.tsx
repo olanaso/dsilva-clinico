@@ -254,9 +254,9 @@ const Especialidades = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Medicina Ocupacional Card - Featured */}
+              {/* Medicina Ocupacional Card */}
               {showOccupationalMedicine && (
-                <div className="md:col-span-2 lg:col-span-3 animate-fade-in">
+                <div className="animate-fade-in">
                   <OccupationalMedicineCard {...occupationalMedicine} />
                 </div>
               )}
