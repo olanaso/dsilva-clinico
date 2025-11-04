@@ -17,6 +17,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SpecialtyCard from "@/components/SpecialtyCard";
+import OccupationalMedicineCard from "@/components/OccupationalMedicineCard";
 import { Input } from "@/components/ui/input";
 
 // Import specialty images
@@ -36,47 +37,48 @@ import farmaciaImg from "@/assets/specialties/farmacia.jpg";
 const Especialidades = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Medicina Ocupacional con sub-especialidades
+  const occupationalMedicine = {
+    icon: Syringe,
+    title: "Medicina Ocupacional",
+    description: "Evaluaciones médicas laborales integrales con más de 13 años de experiencia, incluyendo exámenes especializados en audiometría, espirometría y electrocardiograma.",
+    fullDescription: "Nuestro servicio de Medicina Ocupacional ofrece evaluaciones médicas laborales completas, exámenes ocupacionales y programas de salud empresarial. Con más de 13 años de experiencia, brindamos un servicio ágil y seguro conforme a las normativas de salud y seguridad laboral vigentes. Contamos con tecnología de última generación y un equipo multidisciplinario de especialistas que garantizan diagnósticos precisos y confiables.",
+    objectives: "Evaluar la aptitud del trabajador para el puesto de trabajo, prevenir enfermedades ocupacionales, y garantizar ambientes laborales seguros mediante exámenes especializados de salud ocupacional.",
+    responsible: "Médico Ocupacional certificado y equipo multidisciplinario",
+    organs: ["cuerpo completo", "sistema general", "salud laboral", "medicina del trabajo"],
+    image: medicinaOcupacionalImg,
+    subSpecialties: [
+      {
+        icon: Ear,
+        title: "Audiometría",
+        specialty: "Otorrinolaringología",
+        description: "Evaluación completa del nivel de audición mediante el uso de un audiómetro digital en cabina insonorizada. Este estudio es fundamental para detectar pérdidas auditivas relacionadas con la exposición ocupacional al ruido y prevenir daños permanentes en el sistema auditivo.",
+        objectives: "Detectar tempranamente pérdida auditiva, prevenir afecciones ocupacionales por exposición al ruido, evaluar la capacidad auditiva del trabajador y cumplir con las normativas de vigilancia médica ocupacional.",
+        responsible: "Lic. Enfermería especializado en Audiometría / Técnico en Audiometría certificado",
+        image: audiometriaImg,
+      },
+      {
+        icon: Activity,
+        title: "Espirometría",
+        specialty: "Neumología",
+        description: "Prueba de función pulmonar que mide la capacidad respiratoria mediante un espirómetro de última generación. Permite evaluar el funcionamiento de los pulmones y detectar enfermedades respiratorias ocupacionales de forma temprana.",
+        objectives: "Identificar enfermedades respiratorias como asma, Enfermedad Pulmonar Obstructiva Crónica (EPOC), restricción ventilatoria, evaluar el impacto de exposición a polvos y gases ocupacionales, y monitorear la salud respiratoria de los trabajadores.",
+        responsible: "Lic. Enfermería especializado en Espirometría / Técnico en Espirometría certificado",
+        image: espirometriaImg,
+      },
+      {
+        icon: Heart,
+        title: "Electrocardiograma",
+        specialty: "Cardiología",
+        description: "Registro preciso de la actividad eléctrica del corazón a través de electrodos colocados estratégicamente en el pecho. Este estudio es esencial para evaluar la salud cardiovascular del trabajador y detectar anomalías cardíacas que puedan representar un riesgo laboral.",
+        objectives: "Evaluar el estado del sistema cardiovascular, detectar arritmias, cardiopatías, isquemias o alteraciones del ritmo cardíaco, y determinar la aptitud cardiovascular para labores que demandan esfuerzo físico.",
+        responsible: "Médico Cardiólogo / Médico certificado en interpretación de ECG",
+        image: electrocardiogramaImg,
+      },
+    ],
+  };
+
   const specialties = [
-    {
-      icon: Syringe,
-      title: "Medicina Ocupacional",
-      description: "Exámenes médicos ocupacionales con más de 13 años de experiencia.",
-      fullDescription: "Evaluaciones médicas laborales, exámenes ocupacionales y programas de salud empresarial. Servicio ágil y seguro conforme a normativas de salud y seguridad laboral.",
-      objectives: "Evaluar la aptitud del trabajador para el puesto de trabajo y prevenir enfermedades ocupacionales.",
-      responsible: "Médico Ocupacional certificado",
-      organs: ["cuerpo completo", "sistema general"],
-      image: medicinaOcupacionalImg,
-    },
-    {
-      icon: Ear,
-      title: "Audiometría",
-      description: "Evaluación del nivel de audición mediante el uso de un audiómetro en cabina.",
-      fullDescription: "Evaluación del nivel de audición mediante el uso de un audiómetro en cabina insonorizada.",
-      objectives: "Detectar pérdida auditiva y prevenir afecciones ocupacionales por exposición al ruido.",
-      responsible: "Lic. Enfermería, Técnico en Audiometría",
-      organs: ["oídos", "oído", "sistema auditivo"],
-      image: audiometriaImg,
-    },
-    {
-      icon: Activity,
-      title: "Espirometría",
-      description: "Prueba de función pulmonar que mide la capacidad respiratoria.",
-      fullDescription: "Prueba de función pulmonar que mide la capacidad respiratoria mediante un espirómetro.",
-      objectives: "Identificar enfermedades respiratorias como asma, Enfermedad Pulmonar Obstructiva Crónica o restricción ventilatoria.",
-      responsible: "Lic. Enfermería, Técnico en Espirometría",
-      organs: ["pulmones", "sistema respiratorio", "vías respiratorias", "bronquios"],
-      image: espirometriaImg,
-    },
-    {
-      icon: Heart,
-      title: "Electrocardiograma",
-      description: "Registro de la actividad eléctrica del corazón a través de electrodos.",
-      fullDescription: "Registro de la actividad eléctrica del corazón a través de electrodos colocados en el pecho.",
-      objectives: "Evaluar el estado del sistema cardiovascular y detectar arritmias o cardiopatías.",
-      responsible: "Médico Cardiólogo",
-      organs: ["corazón", "sistema cardiovascular", "arterias", "venas"],
-      image: electrocardiogramaImg,
-    },
     {
       icon: Microscope,
       title: "Laboratorio Clínico Automatizado",
@@ -171,6 +173,34 @@ const Especialidades = () => {
     );
   });
 
+  // Filtrar Medicina Ocupacional
+  const occupationalMedicineMatches = () => {
+    if (!searchTerm) return true;
+    const search = searchTerm.toLowerCase();
+    
+    // Buscar en la especialidad principal
+    const mainMatch = (
+      occupationalMedicine.title.toLowerCase().includes(search) ||
+      occupationalMedicine.description.toLowerCase().includes(search) ||
+      occupationalMedicine.fullDescription.toLowerCase().includes(search) ||
+      occupationalMedicine.objectives.toLowerCase().includes(search) ||
+      occupationalMedicine.organs.some(organ => organ.toLowerCase().includes(search))
+    );
+    
+    // Buscar en las sub-especialidades
+    const subMatch = occupationalMedicine.subSpecialties.some(sub =>
+      sub.title.toLowerCase().includes(search) ||
+      sub.specialty.toLowerCase().includes(search) ||
+      sub.description.toLowerCase().includes(search) ||
+      sub.objectives.toLowerCase().includes(search)
+    );
+    
+    return mainMatch || subMatch;
+  };
+
+  const showOccupationalMedicine = occupationalMedicineMatches();
+  const totalResults = filteredSpecialties.length + (showOccupationalMedicine ? 1 : 0);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -206,7 +236,7 @@ const Especialidades = () => {
             </div>
             {searchTerm && (
               <p className="text-sm text-muted-foreground mt-2">
-                {filteredSpecialties.length} {filteredSpecialties.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}
+                {totalResults} {totalResults === 1 ? 'resultado encontrado' : 'resultados encontrados'}
               </p>
             )}
           </div>
@@ -216,7 +246,7 @@ const Especialidades = () => {
       {/* Specialties Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          {filteredSpecialties.length === 0 ? (
+          {totalResults === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">
                 No se encontraron especialidades que coincidan con tu búsqueda
@@ -224,11 +254,19 @@ const Especialidades = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Medicina Ocupacional Card - Featured */}
+              {showOccupationalMedicine && (
+                <div className="md:col-span-2 lg:col-span-3 animate-fade-in">
+                  <OccupationalMedicineCard {...occupationalMedicine} />
+                </div>
+              )}
+              
+              {/* Other Specialties */}
               {filteredSpecialties.map((specialty, index) => (
-              <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
-                <SpecialtyCard {...specialty} />
-              </div>
-            ))}
+                <div key={index} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 50}ms` }}>
+                  <SpecialtyCard {...specialty} />
+                </div>
+              ))}
             </div>
           )}
         </div>
