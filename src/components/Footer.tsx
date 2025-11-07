@@ -31,7 +31,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Policlínico Ocupacional Challhuahuacho" className="h-12 w-12" />
+              <img src={logo} alt="Policlínico Ocupacional Challhuahuacho" className="h-14 w-14 drop-shadow-lg" />
               <div>
                 <h3 className="font-display font-bold text-lg">D'SILVA</h3>
                 <p className="text-xs text-secondary">Policlínico Ocupacional</p>

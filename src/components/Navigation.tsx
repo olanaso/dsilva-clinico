@@ -39,7 +39,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={logo} alt="D'Silva Policlínico" className="h-12 w-12 transition-transform group-hover:scale-105" />
+            <img src={logo} alt="D'Silva Policlínico" className="h-14 w-14 transition-transform group-hover:scale-105 drop-shadow-lg" />
             <div>
               <h1 className="font-display font-bold text-xl text-foreground">D'SILVA</h1>
               <p className="text-xs text-accent font-semibold">Policlínico</p>
