@@ -8,24 +8,24 @@ const Footer = () => {
     <footer className="bg-primary text-primary-foreground relative overflow-hidden">
       {/* DNA Helix Decoration - Left Side */}
       <div className="absolute left-0 top-0 h-full w-32 opacity-10 pointer-events-none">
-        <img 
-          src={dnaHelix} 
-          alt="" 
+        <img
+          src={dnaHelix}
+          alt=""
           className="h-full w-full object-cover object-center animate-pulse"
-          style={{ animationDuration: '4s' }}
+          style={{ animationDuration: "4s" }}
         />
       </div>
-      
+
       {/* DNA Helix Decoration - Right Side */}
       <div className="absolute right-0 top-0 h-full w-32 opacity-10 pointer-events-none transform scale-x-[-1]">
-        <img 
-          src={dnaHelix} 
-          alt="" 
+        <img
+          src={dnaHelix}
+          alt=""
           className="h-full w-full object-cover object-center animate-pulse"
-          style={{ animationDuration: '4s', animationDelay: '2s' }}
+          style={{ animationDuration: "4s", animationDelay: "2s" }}
         />
       </div>
-      
+
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
@@ -94,7 +94,10 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <Mail className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
                 <div className="break-all">
-                  <a href="mailto:administracion@dsilvapoliclinico.com" className="hover:text-secondary transition-colors">
+                  <a
+                    href="mailto:administracion@dsilvapoliclinico.com"
+                    className="hover:text-secondary transition-colors"
+                  >
                     administracion@dsilvapoliclinico.com
                   </a>
                 </div>
@@ -143,9 +146,14 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-4 mt-6">
-              <a href="#" className="hover:text-secondary transition-colors" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/profile.php?id=100064157590137"
+                target="_blank"
+                className="hover:text-secondary transition-colors"
+                aria-label="Facebook"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="hover:text-secondary transition-colors" aria-label="Instagram">
