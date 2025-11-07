@@ -4,117 +4,168 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { 
   ClipboardCheck, 
   UserCheck, 
   Calendar, 
   UserX, 
   RefreshCw,
-  ArrowUpCircle,
-  Mountain,
-  Box,
-  Flame,
-  Zap,
+  Stethoscope,
+  Microscope,
+  Ear,
+  Wind,
+  Activity,
+  Weight,
+  Brain,
+  Users,
+  Pill,
+  Glasses,
+  Ambulance,
+  Eye,
+  Heart,
+  Utensils,
+  Car,
   Building2,
-  Factory,
-  ShoppingCart,
-  HardHat,
-  Hotel,
-  Code,
-  Wrench,
   MessageCircle,
-  Award,
-  Clock
+  Shield,
+  FileCheck
 } from "lucide-react";
-import preOcupacionalImg from "@/assets/exams/pre-ocupacional.jpg";
-import periodicoImg from "@/assets/exams/periodico.jpg";
-import retiroImg from "@/assets/exams/retiro.jpg";
-import reintegroImg from "@/assets/exams/reintegro.jpg";
+import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jpg";
+import odontologiaImg from "@/assets/specialties/odontologia.jpg";
+import laboratorioImg from "@/assets/specialties/laboratorio.jpg";
+import audiometriaImg from "@/assets/specialties/audiometria.jpg";
+import espirometriaImg from "@/assets/specialties/espirometria.jpg";
+import electrocardiogramaImg from "@/assets/specialties/electrocardiograma.jpg";
+import psicologiaImg from "@/assets/specialties/psicologia.jpg";
+import medicinaGeneralImg from "@/assets/specialties/medicina-general.jpg";
+import ecografiaImg from "@/assets/specialties/ecografia.jpg";
+import rayosXImg from "@/assets/specialties/rayos-x.jpg";
+import farmaciaImg from "@/assets/specialties/farmacia.jpg";
+import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
 
 const ExamenesOcupacionales = () => {
-  const mainExams = [
+  const services = [
     {
-      icon: UserCheck,
-      title: "Examen Médico Ocupacional De Reincorporación Laboral",
-      subtitle: "Ingreso al Trabajo",
-      description: "Se realiza cuando un colaborador de la empresa se reincorpora a la organización tras haber sufrido alguna incapacidad temporal dentro del trabajo.",
-      includes: ["Evaluación médica general", "Análisis de laboratorio", "Exámenes auxiliares según puesto", "Certificado de aptitud"],
-      image: preOcupacionalImg
+      id: "examen-medico",
+      title: "Examen Médico Ocupacional",
+      icon: ClipboardCheck,
+      description: "Evaluaciones médicas ocupacionales completas según la normativa vigente del Ministerio de Salud y Trabajo.",
+      image: medicinaOcupacionalImg,
+      color: "from-blue-500/10 to-blue-600/10",
+      subServices: [
+        { icon: UserCheck, name: "Examen de Ingreso", description: "Evaluación médica previa al inicio de actividades laborales" },
+        { icon: Calendar, name: "Examen Anual o Periódico", description: "Control médico anual para seguimiento de la salud ocupacional" },
+        { icon: UserX, name: "Examen de Retiro", description: "Evaluación al cese de la relación laboral" },
+        { icon: Stethoscope, name: "Examen de Visita", description: "Evaluación médica para visitantes temporales" },
+        { icon: RefreshCw, name: "Reincorporación Laboral", description: "Evaluación tras ausencia por incapacidad temporal" },
+        { icon: Building2, name: "Cambio de Puesto Laboral", description: "Evaluación al cambiar de funciones o responsabilidades" },
+        { icon: Car, name: "Conductores", description: "Examen específico para personal que conduce vehículos" },
+        { icon: Utensils, name: "Manipulador de Alimentos", description: "Evaluación para personal que manipula alimentos" }
+      ]
     },
     {
-      icon: Calendar,
-      title: "Examen Médico Ocupacional De Cambio De Puesto En El Trabajo",
-      subtitle: "Cambio de Puesto",
-      description: "Se realiza cuando el colaborador experimenta cambios en sus responsabilidades o área, incluyendo la adición de nuevas tareas que implican un nivel de riesgo mayor.",
-      includes: ["Control médico anual", "Evaluaciones específicas", "Monitoreo de salud ocupacional", "Actualización de historia clínica"],
-      image: periodicoImg
+      id: "levantamiento",
+      title: "Levantamiento de Observación",
+      icon: FileCheck,
+      description: "Servicios especializados para el levantamiento de observaciones detectadas en evaluaciones ocupacionales.",
+      image: laboratorioImg,
+      color: "from-green-500/10 to-green-600/10",
+      subServices: [
+        { icon: Stethoscope, name: "Odontología", description: "Tratamientos y evaluaciones odontológicas", image: odontologiaImg },
+        { icon: Microscope, name: "Laboratorio Clínico", description: "Análisis clínicos y pruebas de laboratorio", image: laboratorioImg },
+        { icon: Ear, name: "Audiometría", description: "Evaluación de la capacidad auditiva", image: audiometriaImg },
+        { icon: Wind, name: "Espirometría", description: "Evaluación de la función pulmonar", image: espirometriaImg },
+        { icon: Activity, name: "EKG (Electrocardiograma)", description: "Evaluación de la actividad cardíaca", image: electrocardiogramaImg },
+        { icon: Weight, name: "Control de Peso", description: "Evaluación y seguimiento del peso corporal" },
+        { icon: Brain, name: "Psicología", description: "Evaluación y apoyo psicológico", image: psicologiaImg }
+      ],
+      interconsulta: [
+        { name: "Endocrinología", description: "Especialista en trastornos hormonales" },
+        { name: "Hematología", description: "Especialista en enfermedades de la sangre" },
+        { name: "Medicina Interna", description: "Diagnóstico integral de enfermedades internas" },
+        { name: "Neumología", description: "Especialista en enfermedades respiratorias" },
+        { name: "Otorrinolaringología", description: "Especialista en oído, nariz y garganta" },
+        { name: "Nutrición", description: "Asesoría nutricional especializada" },
+        { name: "Oftalmología", description: "Especialista en salud visual" },
+        { name: "Cardiología", description: "Especialista en salud cardiovascular" }
+      ]
     },
     {
-      icon: UserX,
-      title: "Examen Médico Ocupacional De Retiro",
-      subtitle: "Cese Laboral",
-      description: "Se realiza unos días antes de concluir el contrato laboral con su empresa para detectar posibles enfermedades relacionadas con las actividades laborales.",
-      includes: ["Evaluación médica final", "Diagnóstico de salud al cese", "Certificado de retiro", "Registro en historia ocupacional"],
-      image: retiroImg
+      id: "asistencia",
+      title: "Servicio de Asistencia",
+      icon: Stethoscope,
+      description: "Servicios de consulta médica y diagnóstico por imágenes para el cuidado integral de la salud.",
+      image: medicinaGeneralImg,
+      color: "from-purple-500/10 to-purple-600/10",
+      subServices: [
+        { icon: Stethoscope, name: "Consulta Médica", description: "Atención médica general", image: medicinaGeneralImg },
+        { icon: Stethoscope, name: "Consulta Odontológica", description: "Atención odontológica especializada", image: odontologiaImg },
+        { icon: Brain, name: "Consulta Psicológica", description: "Atención psicológica profesional", image: psicologiaImg },
+        { icon: Activity, name: "Imagenología", description: "Servicios de diagnóstico por imágenes" },
+        { icon: Activity, name: "Ecografía", description: "Estudios ecográficos", image: ecografiaImg },
+        { icon: Activity, name: "Rayos X", description: "Radiografías digitales", image: rayosXImg }
+      ]
     },
     {
-      icon: RefreshCw,
-      title: "Examen Médico Ocupacional Periódico",
-      subtitle: "Evaluación Anual",
-      description: "Evaluación médica programada durante la relación laboral para detectar precozmente daños a la salud ocasionados por la exposición a factores de riesgo.",
-      includes: ["Evaluación de capacidad funcional", "Valoración de restricciones", "Recomendaciones médicas", "Plan de reincorporación"],
-      image: reintegroImg
+      id: "vigilancia",
+      title: "Vigilancia Ocupacional",
+      icon: Shield,
+      description: "Monitoreo continuo de la salud de los trabajadores expuestos a factores de riesgo ocupacional.",
+      image: electrocardiogramaImg,
+      color: "from-orange-500/10 to-orange-600/10",
+      subServices: [
+        { icon: Shield, name: "Monitoreo de Agentes Físicos", description: "Control de exposición a ruido, vibración, temperatura" },
+        { icon: Shield, name: "Monitoreo de Agentes Químicos", description: "Control de exposición a sustancias químicas" },
+        { icon: Shield, name: "Monitoreo de Agentes Biológicos", description: "Control de exposición a agentes biológicos" },
+        { icon: Shield, name: "Evaluación Ergonómica", description: "Análisis de puestos de trabajo" }
+      ]
+    },
+    {
+      id: "ambulancia",
+      title: "Servicio de Ambulancia",
+      icon: Ambulance,
+      description: "Servicio de traslado médico de emergencia equipado con personal capacitado y tecnología médica.",
+      image: null,
+      color: "from-red-500/10 to-red-600/10",
+      subServices: [
+        { icon: Ambulance, name: "Traslado de Emergencia", description: "Atención médica pre-hospitalaria y traslado urgente" },
+        { icon: Ambulance, name: "Traslado Programado", description: "Traslado de pacientes para consultas o tratamientos" },
+        { icon: Users, name: "Cobertura de Eventos", description: "Servicio de ambulancia para eventos corporativos" }
+      ]
+    },
+    {
+      id: "optica",
+      title: "Óptica",
+      icon: Glasses,
+      description: "Servicios de optometría y venta de lentes oftálmicos de calidad.",
+      image: oftalmologiaImg,
+      color: "from-cyan-500/10 to-cyan-600/10",
+      subServices: [
+        { icon: Eye, name: "Evaluación Optométrica", description: "Examen completo de la vista" },
+        { icon: Glasses, name: "Lentes Oftálmicos", description: "Venta de lentes con y sin medida" },
+        { icon: Glasses, name: "Lentes de Contacto", description: "Adaptación y venta de lentes de contacto" },
+        { icon: Eye, name: "Lentes de Seguridad", description: "Lentes de protección ocupacional" }
+      ]
+    },
+    {
+      id: "farmacia",
+      title: "Farmacia",
+      icon: Pill,
+      description: "Dispensación de medicamentos y productos farmacéuticos con asesoría profesional.",
+      image: farmaciaImg,
+      color: "from-pink-500/10 to-pink-600/10",
+      subServices: [
+        { icon: Pill, name: "Medicamentos con Receta", description: "Dispensación de medicamentos bajo prescripción médica" },
+        { icon: Pill, name: "Venta Libre", description: "Productos farmacéuticos de venta sin receta" },
+        { icon: Heart, name: "Productos de Cuidado Personal", description: "Productos para el cuidado de la salud" },
+        { icon: Pill, name: "Asesoría Farmacéutica", description: "Orientación profesional sobre medicamentos" }
+      ]
     }
-  ];
-
-  const specializedExams = [
-    {
-      icon: ArrowUpCircle,
-      title: "Trabajos en Altura",
-      description: "Evaluaciones especializadas para trabajadores que realizan labores a más de 1.80 metros. Incluye evaluación cardiovascular, equilibrio y vértigo.",
-      color: "text-blue-500"
-    },
-    {
-      icon: Mountain,
-      title: "Altura Geográfica - Anexo 16",
-      description: "Examen específico para trabajos en minería o a más de 2,500 msnm. Incluye evaluaciones cardiológicas y respiratorias especializadas.",
-      color: "text-purple-500"
-    },
-    {
-      icon: Box,
-      title: "Espacios Confinados",
-      description: "Evaluación para trabajadores en áreas con ventilación limitada. Incluye pruebas respiratorias y evaluación psicológica especializada.",
-      color: "text-orange-500"
-    },
-    {
-      icon: Flame,
-      title: "Trabajos en Caliente",
-      description: "Para trabajadores expuestos a altas temperaturas. Evaluación cardiovascular, oftalmológica y dermatológica especializada.",
-      color: "text-red-500"
-    },
-    {
-      icon: Zap,
-      title: "Riesgo Eléctrico",
-      description: "Evaluación para personal que trabaja con energía eléctrica. Incluye examen cardiovascular y valoración de coordinación motora.",
-      color: "text-yellow-500"
-    }
-  ];
-
-  const sectorExams = [
-    { icon: Factory, title: "Minería", description: "Exámenes especializados según DS 024-2016-EM" },
-    { icon: HardHat, title: "Construcción", description: "Evaluaciones para trabajo en obra" },
-    { icon: ShoppingCart, title: "Comercio", description: "Exámenes para sector retail y comercial" },
-    { icon: Zap, title: "Electricidad", description: "Evaluaciones para electricistas" },
-    { icon: Hotel, title: "Hotelería", description: "Exámenes para sector turismo" },
-    { icon: Code, title: "Tecnología", description: "Evaluaciones para trabajos de oficina" },
-    { icon: Building2, title: "Industria", description: "Exámenes para sector industrial" },
-    { icon: Wrench, title: "Soldadura", description: "Evaluaciones especializadas para soldadores" }
   ];
 
   return (
@@ -127,14 +178,13 @@ const ExamenesOcupacionales = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <Badge variant="secondary" className="mb-6 text-base px-4 py-1.5">
-              Certificados Oficiales
+              Servicios Integrales de Salud
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Exámenes Médicos<br />Ocupacionales
+              Nuestros Servicios
             </h1>
             <p className="text-xl md:text-2xl mb-10 text-primary-foreground/90 max-w-3xl mx-auto">
-              Servicios especializados cumpliendo con todas las normativas 
-              del Ministerio de Salud y Ministerio de Trabajo
+              Soluciones completas en salud ocupacional y asistencial con los más altos estándares de calidad
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button 
@@ -144,7 +194,7 @@ const ExamenesOcupacionales = () => {
                 className="gap-2 hover-scale shadow-lg"
               >
                 <MessageCircle className="h-5 w-5" />
-                Cotizar Examen
+                Solicitar Información
               </Button>
               <Button 
                 size="lg" 
@@ -159,130 +209,117 @@ const ExamenesOcupacionales = () => {
         </div>
       </section>
 
-      {/* Main Exams Section */}
+      {/* Services Section */}
       <section className="py-20 bg-gradient-to-b from-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge variant="outline" className="mb-4">
-              Exámenes Principales
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Tipos de Exámenes Ocupacionales
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Evaluaciones médicas según cada fase de la relación laboral
-            </p>
-          </div>
-
-          <div className="max-w-6xl mx-auto px-12">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {mainExams.map((exam, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <Card className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 hover:-translate-y-2 overflow-hidden h-full">
-                      {/* Image Section */}
-                      <div className="relative h-64 overflow-hidden">
-                        <img 
-                          src={exam.image} 
-                          alt={exam.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {/* Badges Overlay */}
-                        <div className="absolute top-4 right-4 flex flex-col gap-2">
-                          <Badge className="bg-destructive text-destructive-foreground shadow-lg">
-                            RESULTADOS EL MISMO DÍA
-                          </Badge>
-                          <Badge className="bg-yellow-500 text-yellow-950 shadow-lg flex items-center gap-1">
-                            <Award className="h-3 w-3" />
-                            100% CALIDAD
-                          </Badge>
-                          <Badge className="bg-background text-foreground shadow-lg flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            +10 AÑOS DE EXPERIENCIA
-                          </Badge>
-                        </div>
-                      </div>
-
-                      {/* Content Section */}
-                      <CardHeader>
-                        <CardTitle className="text-lg md:text-xl mb-2 group-hover:text-primary transition-colors text-center">
-                          {exam.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex flex-col gap-4">
-                        <p className="text-sm text-muted-foreground leading-relaxed text-center min-h-[80px]">
-                          {exam.description}
-                        </p>
-                        <Button 
-                          className="w-full"
-                          onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                        >
-                          Cotiza aquí
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      {/* Specialized Exams Section */}
-      <section className="py-20 bg-gradient-to-b from-secondary/5 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge variant="outline" className="mb-4">
-              Evaluaciones Especializadas
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Exámenes Especializados
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Evaluaciones específicas según el tipo de riesgo ocupacional
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {specializedExams.map((exam, index) => {
-              const Icon = exam.icon;
+          <div className="max-w-7xl mx-auto space-y-12">
+            {services.map((service, index) => {
+              const ServiceIcon = service.icon;
               return (
                 <Card 
-                  key={index} 
-                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-background to-secondary/5 border-2 hover:border-primary/50 animate-fade-in"
+                  key={service.id} 
+                  className="overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardHeader>
-                    <div className="flex flex-col items-center text-center gap-4 mb-2">
-                      <div className={`p-4 bg-gradient-to-br from-background to-secondary/10 rounded-2xl group-hover:scale-110 transition-transform shadow-lg`}>
-                        <Icon className={`h-12 w-12 ${exam.color}`} />
+                  <div className="grid md:grid-cols-3 gap-0">
+                    {/* Image Section */}
+                    {service.image && (
+                      <div className="relative h-64 md:h-auto overflow-hidden">
+                        <img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-r ${service.color}`} />
                       </div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                        {exam.title}
-                      </CardTitle>
+                    )}
+                    
+                    {/* Content Section */}
+                    <div className={service.image ? "md:col-span-2" : "md:col-span-3"}>
+                      <CardHeader className="pb-4">
+                        <div className="flex items-start gap-4">
+                          <div className={`p-4 bg-gradient-to-br ${service.color} rounded-2xl`}>
+                            <ServiceIcon className="h-10 w-10 text-primary" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-2xl md:text-3xl mb-3">
+                              {service.title}
+                            </CardTitle>
+                            <CardDescription className="text-base">
+                              {service.description}
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      
+                      <CardContent>
+                        {/* Sub-services */}
+                        <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="subservices">
+                            <AccordionTrigger className="text-lg font-semibold hover:text-primary">
+                              Ver servicios incluidos ({service.subServices.length})
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                                {service.subServices.map((sub, idx) => {
+                                  const SubIcon = sub.icon;
+                                  return (
+                                    <div 
+                                      key={idx} 
+                                      className="flex gap-3 p-4 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors group"
+                                    >
+                                      <div className="flex-shrink-0">
+                                        <SubIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                                      </div>
+                                      <div>
+                                        <h4 className="font-semibold text-sm mb-1">{sub.name}</h4>
+                                        <p className="text-xs text-muted-foreground">{sub.description}</p>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                          
+                          {/* Interconsulta Section for Levantamiento */}
+                          {service.interconsulta && (
+                            <AccordionItem value="interconsulta">
+                              <AccordionTrigger className="text-lg font-semibold hover:text-primary">
+                                Interconsultas disponibles ({service.interconsulta.length})
+                              </AccordionTrigger>
+                              <AccordionContent>
+                                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-4">
+                                  {service.interconsulta.map((consult, idx) => (
+                                    <div 
+                                      key={idx} 
+                                      className="p-3 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors text-center group"
+                                    >
+                                      <Users className="h-5 w-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                                      <h4 className="font-semibold text-sm mb-1">{consult.name}</h4>
+                                      <p className="text-xs text-muted-foreground">{consult.description}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          )}
+                        </Accordion>
+                        
+                        {/* CTA Button */}
+                        <div className="mt-6 pt-6 border-t">
+                          <Button 
+                            size="lg"
+                            className="w-full sm:w-auto"
+                            onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+                          >
+                            <MessageCircle className="h-5 w-5 mr-2" />
+                            Solicitar Información
+                          </Button>
+                        </div>
+                      </CardContent>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground text-center mb-4 min-h-[4rem]">
-                      {exam.description}
-                    </p>
-                    <Button 
-                      variant="ghost" 
-                      className="w-full hover:bg-primary/10 hover:text-primary"
-                      onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                    >
-                      Solicitar cotización →
-                    </Button>
-                  </CardContent>
+                  </div>
                 </Card>
               );
             })}
@@ -290,50 +327,7 @@ const ExamenesOcupacionales = () => {
         </div>
       </section>
 
-      {/* Sector Exams Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
-            <Badge variant="outline" className="mb-4">
-              Por Industria
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Exámenes por Sector Económico
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Evaluaciones médicas adaptadas a cada industria
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {sectorExams.map((sector, index) => {
-              const Icon = sector.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="group hover:shadow-xl transition-all duration-300 cursor-pointer hover:border-primary/50 hover:-translate-y-2 bg-gradient-to-br from-background to-primary/5 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                  onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                >
-                  <CardContent className="pt-8 pb-6 text-center">
-                    <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">
-                      {sector.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {sector.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
+      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-b from-secondary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
@@ -341,13 +335,13 @@ const ExamenesOcupacionales = () => {
               <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]" />
               <CardHeader className="text-center relative z-10 pt-12">
                 <Badge variant="secondary" className="mb-4 mx-auto">
-                  Nuestras Ventajas
+                  Atención Profesional
                 </Badge>
                 <CardTitle className="text-3xl md:text-4xl mb-4">
-                  ¿Por qué elegir D'Silva Policlínico?
+                  ¿Por qué elegirnos?
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Experiencia y calidad en medicina ocupacional
+                  Más de 10 años de experiencia en salud ocupacional
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10 pb-12">
@@ -360,7 +354,7 @@ const ExamenesOcupacionales = () => {
                       <div>
                         <h4 className="font-bold text-lg mb-2">Personal Certificado</h4>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                          Médicos ocupacionales certificados por el Ministerio de Salud
+                          Médicos ocupacionales certificados por MINSA
                         </p>
                       </div>
                     </div>
@@ -369,9 +363,9 @@ const ExamenesOcupacionales = () => {
                         <div className="h-3 w-3 rounded-full bg-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg mb-2">Equipos Modernos</h4>
+                        <h4 className="font-bold text-lg mb-2">Equipamiento Moderno</h4>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                          Tecnología de punta para diagnósticos precisos
+                          Tecnología de última generación
                         </p>
                       </div>
                     </div>
@@ -423,45 +417,17 @@ const ExamenesOcupacionales = () => {
                     </div>
                   </div>
                 </div>
+                <div className="mt-10 flex justify-center">
+                  <Button 
+                    size="lg"
+                    onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+                  >
+                    <MessageCircle className="h-5 w-5 mr-2" />
+                    Contáctanos ahora
+                  </Button>
+                </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <Badge variant="secondary" className="mb-6 text-base px-4 py-1.5">
-              Estamos para ayudarte
-            </Badge>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              ¿Necesitas realizar exámenes ocupacionales?
-            </h2>
-            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-primary-foreground/90">
-              Contáctanos para recibir una cotización personalizada según las necesidades de tu empresa
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="secondary"
-                onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                className="gap-2 hover-scale shadow-xl text-lg px-8 py-6"
-              >
-                <MessageCircle className="h-6 w-6" />
-                Solicitar Cotización
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground hover-scale shadow-xl text-lg px-8 py-6"
-                onClick={() => window.location.href = 'tel:+51929312370'}
-              >
-                Llamar Ahora
-              </Button>
-            </div>
           </div>
         </div>
       </section>
