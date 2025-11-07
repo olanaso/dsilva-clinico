@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
+import dnaHelix from "@/assets/dna-helix.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-primary text-primary-foreground relative overflow-hidden">
+      {/* DNA Helix Decoration - Left Side */}
+      <div className="absolute left-0 top-0 h-full w-32 opacity-10 pointer-events-none">
+        <img 
+          src={dnaHelix} 
+          alt="" 
+          className="h-full w-full object-cover object-center animate-pulse"
+          style={{ animationDuration: '4s' }}
+        />
+      </div>
+      
+      {/* DNA Helix Decoration - Right Side */}
+      <div className="absolute right-0 top-0 h-full w-32 opacity-10 pointer-events-none transform scale-x-[-1]">
+        <img 
+          src={dnaHelix} 
+          alt="" 
+          className="h-full w-full object-cover object-center animate-pulse"
+          style={{ animationDuration: '4s', animationDelay: '2s' }}
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
