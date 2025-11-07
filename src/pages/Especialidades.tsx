@@ -253,20 +253,52 @@ const Especialidades = () => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Medicina Ocupacional Card */}
+            <div className="space-y-12">
+              {/* Medicina Ocupacional Block */}
               {showOccupationalMedicine && (
                 <div className="animate-fade-in">
-                  <OccupationalMedicineCard {...occupationalMedicine} />
+                  <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-8 border-2 border-primary/20">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-hero flex items-center justify-center">
+                        <Syringe className="h-6 w-6 text-primary-foreground" />
+                      </div>
+                      <div>
+                        <h2 className="font-display text-3xl font-bold text-foreground">
+                          Medicina Ocupacional
+                        </h2>
+                        <p className="text-sm text-muted-foreground">
+                          Evaluaciones médicas laborales con tecnología de punta
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                      {occupationalMedicine.subSpecialties.map((subSpecialty, index) => (
+                        <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 50}ms` }}>
+                          <SpecialtyCard
+                            icon={subSpecialty.icon}
+                            title={subSpecialty.title}
+                            description={subSpecialty.description}
+                            fullDescription={subSpecialty.description}
+                            objectives={subSpecialty.objectives}
+                            responsible={subSpecialty.responsible}
+                            image={subSpecialty.image}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
               
               {/* Other Specialties */}
-              {filteredSpecialties.map((specialty, index) => (
-                <div key={index} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 50}ms` }}>
-                  <SpecialtyCard {...specialty} />
-                </div>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredSpecialties.map((specialty, index) => (
+                  <div key={index} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 50}ms` }}>
+                    <SpecialtyCard {...specialty} />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
