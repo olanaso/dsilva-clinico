@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import LocationMap from "@/components/LocationMap";
 import { z } from "zod";
+import fachadaImg from "@/assets/fachada.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "El nombre es obligatorio").max(100, "El nombre debe tener menos de 100 caracteres"),
@@ -325,6 +326,15 @@ const Contacto = () => {
                 <p className="text-muted-foreground mb-6">
                   Haz clic en el mapa para abrir la ubicación en Google Maps
                 </p>
+              </div>
+
+              {/* Fachada de la clínica */}
+              <div className="rounded-lg overflow-hidden shadow-medical">
+                <img 
+                  src={fachadaImg} 
+                  alt="Fachada del Policlínico D'Silva - Entrada principal de nuestra clínica con modernas instalaciones"
+                  className="w-full h-auto object-cover"
+                />
               </div>
               
               <div className="space-y-6">
