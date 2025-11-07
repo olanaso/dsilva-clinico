@@ -186,6 +186,29 @@ const Contacto = () => {
         </div>
       </section>
 
+      {/* Fachada con Parallax */}
+      <section className="relative h-[400px] overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ 
+            backgroundImage: `url(${fachadaImg})`,
+            backgroundAttachment: 'fixed'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background"></div>
+        </div>
+        <div className="relative h-full flex items-center justify-center">
+          <div className="text-center animate-fade-in">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Nuestras Instalaciones
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Equipamiento moderno para tu atención médica
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form and Map */}
       <section className="py-12 pb-20">
         <div className="container mx-auto px-4">
@@ -326,15 +349,6 @@ const Contacto = () => {
                 <p className="text-muted-foreground mb-6">
                   Haz clic en el mapa para abrir la ubicación en Google Maps
                 </p>
-              </div>
-
-              {/* Fachada de la clínica */}
-              <div className="rounded-lg overflow-hidden shadow-medical">
-                <img 
-                  src={fachadaImg} 
-                  alt="Fachada del Policlínico D'Silva - Entrada principal de nuestra clínica con modernas instalaciones"
-                  className="w-full h-auto object-cover"
-                />
               </div>
               
               <div className="space-y-6">
