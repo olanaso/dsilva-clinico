@@ -1,42 +1,113 @@
 import { Link } from "react-router-dom";
-import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText } from "lucide-react";
+import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SpecialtyCard from "@/components/SpecialtyCard";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-image.jpg";
+import teamImage from "@/assets/team-image.jpg";
+import medicinaGeneralImg from "@/assets/specialties/medicina-general.jpg";
+import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jpg";
+import odontologiaImg from "@/assets/specialties/odontologia.jpg";
+import psicologiaImg from "@/assets/specialties/psicologia.jpg";
+import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
+import rayosXImg from "@/assets/specialties/rayos-x.jpg";
 
 const Index = () => {
   const specialties = [
     {
-      icon: Heart,
-      title: "Cardiología",
-      description: "Diagnóstico y tratamiento de enfermedades cardiovasculares con tecnología avanzada.",
-    },
-    {
       icon: Stethoscope,
       title: "Medicina General",
       description: "Atención integral para toda la familia con médicos altamente calificados.",
+      fullDescription: "Atención integral para toda la familia con médicos altamente calificados.",
+      objectives: "Brindar atención médica general de calidad",
+      responsible: "Dr. Médico General",
+      image: medicinaGeneralImg
+    },
+    {
+      icon: Heart,
+      title: "Medicina Ocupacional",
+      description: "Especialistas en salud ocupacional con más de 13 años de experiencia.",
+      fullDescription: "Especialistas en salud ocupacional con más de 13 años de experiencia.",
+      objectives: "Cuidar la salud de los trabajadores",
+      responsible: "Dr. Medicina Ocupacional",
+      image: medicinaOcupacionalImg
+    },
+    {
+      icon: Brain,
+      title: "Odontología",
+      description: "Salud dental integral con los mejores especialistas y tecnología moderna.",
+      fullDescription: "Salud dental integral con los mejores especialistas y tecnología moderna.",
+      objectives: "Cuidado dental completo",
+      responsible: "Dr. Odontólogo",
+      image: odontologiaImg
+    },
+    {
+      icon: Heart,
+      title: "Psicología",
+      description: "Atención psicológica profesional para tu bienestar emocional y mental.",
+      fullDescription: "Atención psicológica profesional para tu bienestar emocional y mental.",
+      objectives: "Salud mental integral",
+      responsible: "Psicólogo Clínico",
+      image: psicologiaImg
     },
     {
       icon: Eye,
       title: "Oftalmología",
       description: "Cuidado especializado de la salud visual y tratamiento de enfermedades oculares.",
+      fullDescription: "Cuidado especializado de la salud visual y tratamiento de enfermedades oculares.",
+      objectives: "Salud visual óptima",
+      responsible: "Dr. Oftalmólogo",
+      image: oftalmologiaImg
     },
     {
       icon: Microscope,
-      title: "Laboratorio Clínico",
-      description: "Análisis clínicos precisos con tecnología de última generación.",
+      title: "Rayos X",
+      description: "Radiología digital con tecnología de punta para diagnósticos precisos.",
+      fullDescription: "Radiología digital con tecnología de punta para diagnósticos precisos.",
+      objectives: "Diagnósticos por imágenes",
+      responsible: "Tecnólogo Médico",
+      image: rayosXImg
+    },
+  ];
+
+  const occupationalExams = [
+    {
+      icon: UserCheck,
+      title: "Examen Pre-Ocupacional",
+      description: "Evaluación médica antes del ingreso laboral para determinar la aptitud del trabajador."
     },
     {
-      icon: Brain,
-      title: "Neurología",
-      description: "Evaluación y tratamiento de trastornos del sistema nervioso.",
+      icon: Calendar,
+      title: "Examen Periódico",
+      description: "Control médico anual durante la relación laboral para prevenir enfermedades ocupacionales."
     },
     {
-      icon: Pill,
-      title: "Farmacia",
-      description: "Medicamentos de calidad y asesoría farmacéutica profesional.",
+      icon: UserX,
+      title: "Examen de Retiro",
+      description: "Evaluación final al término del contrato laboral para detectar posibles enfermedades."
+    },
+    {
+      icon: RefreshCw,
+      title: "Examen de Reintegro",
+      description: "Valoración médica tras ausencia prolongada para garantizar capacidad laboral."
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "¿Qué servicios médicos ofrecen?",
+      answer: "Medicina General, Medicina Ocupacional, Odontología, Psicología, Oftalmología, Laboratorio, Rayos X, Ecografía y más."
+    },
+    {
+      question: "¿Cuánto tiempo tarda la entrega de resultados?",
+      answer: "Los resultados de exámenes ocupacionales están disponibles entre 24 a 48 horas hábiles."
+    },
+    {
+      question: "¿Realizan convenios con empresas?",
+      answer: "Sí, ofrecemos convenios corporativos con precios preferenciales y servicios personalizados."
     },
   ];
 
@@ -161,6 +232,190 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Occupational Exams Section */}
+      <section className="py-24 bg-gradient-to-b from-muted to-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="secondary" className="mb-4">
+              Salud Ocupacional
+            </Badge>
+            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+              Exámenes Médicos Ocupacionales
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Más de 13 años de experiencia brindando servicios de medicina ocupacional a importantes empresas del país
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+            {occupationalExams.map((exam, index) => (
+              <Card
+                key={index}
+                className="group hover:shadow-medical transition-all duration-300 hover:-translate-y-2 animate-fade-in bg-gradient-card border-2 border-border/50 hover:border-primary/50"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <exam.icon className="h-7 w-7 text-secondary-foreground" />
+                  </div>
+                  <CardTitle className="text-lg">{exam.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{exam.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button asChild size="lg" className="bg-gradient-hero hover:opacity-90 shadow-medical hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+              <Link to="/examenes-ocupacionales">Ver Todos los Exámenes</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section className="py-24 bg-gradient-to-b from-background to-secondary/10">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="space-y-6 animate-fade-in">
+              <Badge variant="outline">Sobre Nosotros</Badge>
+              <h2 className="font-display text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                Más de 13 Años de Experiencia
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Policlínico D'SILVA es una institución de salud especializada en medicina ocupacional y ambulatoria, 
+                trabajando con importantes empresas como MMG Las Bambas, Graña y Montero, y Minera Antares.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="flex gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-secondary flex items-center justify-center flex-shrink-0">
+                    <Award className="h-6 w-6 text-secondary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">Excelencia</h4>
+                    <p className="text-sm text-muted-foreground">Tecnología de vanguardia</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">Equipo</h4>
+                    <p className="text-sm text-muted-foreground">Personal certificado</p>
+                  </div>
+                </div>
+              </div>
+              <Button asChild size="lg" variant="outline" className="hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 hover:scale-105">
+                <Link to="/nosotros">Conocer Más</Link>
+              </Button>
+            </div>
+            <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
+              <img
+                src={teamImage}
+                alt="Equipo Médico D'Silva"
+                className="rounded-2xl shadow-medical w-full hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Locations Section */}
+      <section className="py-24 bg-gradient-to-b from-secondary/10 to-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="secondary" className="mb-4">
+              Ubicaciones
+            </Badge>
+            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+              Nuestras Sedes
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Dos sedes estratégicamente ubicadas para brindarte la mejor atención
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <Card className="shadow-medical hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-fade-in">
+              <CardHeader>
+                <div className="w-14 h-14 rounded-xl bg-gradient-secondary flex items-center justify-center mb-4">
+                  <MapPin className="h-7 w-7 text-secondary-foreground" />
+                </div>
+                <CardTitle className="text-2xl">Sede Challhuahuacho</CardTitle>
+                <CardDescription>Av. Sulfubamba S/N, Challhuahuacho</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2 text-sm">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <span className="font-medium">Lunes - Domingo</span>
+                </div>
+                <p className="text-sm text-muted-foreground pl-6">8:00 AM - 12:00 PM | 2:30 PM - 8:30 PM</p>
+              </CardContent>
+            </Card>
+
+            <Card className="shadow-medical hover:shadow-hover transition-all duration-300 hover:-translate-y-2 animate-fade-in" style={{ animationDelay: "100ms" }}>
+              <CardHeader>
+                <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-4">
+                  <MapPin className="h-7 w-7 text-primary-foreground" />
+                </div>
+                <CardTitle className="text-2xl">Sede Cusco</CardTitle>
+                <CardDescription>Av. Túpac Amaru O-5, Wanchaq - Cusco</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2 text-sm">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <span className="font-medium">Lunes - Sábado</span>
+                </div>
+                <p className="text-sm text-muted-foreground pl-6">7:00 AM - 12:00 PM | 2:30 PM - 7:00 PM</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gradient-to-b from-background to-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in">
+            <Badge variant="outline" className="mb-4">
+              Preguntas Frecuentes
+            </Badge>
+            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+              ¿Tienes Dudas?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Encuentra respuestas a las preguntas más comunes
+            </p>
+          </div>
+
+          <div className="grid gap-6 max-w-4xl mx-auto mb-12">
+            {faqs.map((faq, index) => (
+              <Card
+                key={index}
+                className="shadow-card-custom hover:shadow-medical transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader>
+                  <CardTitle className="text-lg">{faq.question}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button asChild size="lg" variant="outline" className="hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+              <Link to="/preguntas-frecuentes">Ver Todas las Preguntas</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-hero text-primary-foreground overflow-hidden">
         <div className="absolute inset-0">
@@ -173,9 +428,20 @@ const Index = () => {
             <p className="text-xl md:text-2xl mb-10 opacity-90 leading-relaxed">
               Agenda tu cita hoy mismo y recibe atención médica de calidad con profesionales expertos
             </p>
-            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-glow hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-              <Link to="/contacto">Contactar Ahora</Link>
-            </Button>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-glow hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+                <Link to="/contacto">Agendar Cita</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-105 text-lg px-8 py-6"
+                onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                WhatsApp
+              </Button>
+            </div>
           </div>
         </div>
       </section>
