@@ -4,12 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { 
   ClipboardCheck, 
   UserCheck, 
   Calendar, 
@@ -173,154 +167,95 @@ const ExamenesOcupacionales = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <Badge variant="secondary" className="mb-6 text-base px-4 py-1.5">
-              Servicios Integrales de Salud
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+      <section className="relative py-20 bg-gradient-hero text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="font-display text-5xl font-bold mb-6 animate-fade-in">
               Nuestros Servicios
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-primary-foreground/90 max-w-3xl mx-auto">
+            <p className="text-xl opacity-90 animate-fade-in" style={{ animationDelay: "100ms" }}>
               Soluciones completas en salud ocupacional y asistencial con los más altos estándares de calidad
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="secondary"
-                onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                className="gap-2 hover-scale shadow-lg"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Solicitar Información
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white/10 border-white/30 hover:bg-white/20 text-primary-foreground hover-scale"
-                onClick={() => window.location.href = '/contacto'}
-              >
-                Agendar Cita
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-background to-secondary/5">
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto space-y-12">
+          <div className="space-y-16">
             {services.map((service, index) => {
               const ServiceIcon = service.icon;
               return (
-                <Card 
+                <div 
                   key={service.id} 
-                  className="overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl animate-fade-in"
+                  className="animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="grid md:grid-cols-3 gap-0">
-                    {/* Image Section */}
-                    {service.image && (
-                      <div className="relative h-64 md:h-auto overflow-hidden">
-                        <img 
-                          src={service.image} 
-                          alt={service.title}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-r ${service.color}`} />
-                      </div>
-                    )}
-                    
-                    {/* Content Section */}
-                    <div className={service.image ? "md:col-span-2" : "md:col-span-3"}>
-                      <CardHeader className="pb-4">
-                        <div className="flex items-start gap-4">
-                          <div className={`p-4 bg-gradient-to-br ${service.color} rounded-2xl`}>
-                            <ServiceIcon className="h-10 w-10 text-primary" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="text-2xl md:text-3xl mb-3">
-                              {service.title}
-                            </CardTitle>
-                            <CardDescription className="text-base">
-                              {service.description}
-                            </CardDescription>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      
-                      <CardContent>
-                        {/* Sub-services */}
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="subservices">
-                            <AccordionTrigger className="text-lg font-semibold hover:text-primary">
-                              Ver servicios incluidos ({service.subServices.length})
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="grid sm:grid-cols-2 gap-4 pt-4">
-                                {service.subServices.map((sub, idx) => {
-                                  const SubIcon = sub.icon;
-                                  return (
-                                    <div 
-                                      key={idx} 
-                                      className="flex gap-3 p-4 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors group"
-                                    >
-                                      <div className="flex-shrink-0">
-                                        <SubIcon className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-                                      </div>
-                                      <div>
-                                        <h4 className="font-semibold text-sm mb-1">{sub.name}</h4>
-                                        <p className="text-xs text-muted-foreground">{sub.description}</p>
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                          
-                          {/* Interconsulta Section for Levantamiento */}
-                          {service.interconsulta && (
-                            <AccordionItem value="interconsulta">
-                              <AccordionTrigger className="text-lg font-semibold hover:text-primary">
-                                Interconsultas disponibles ({service.interconsulta.length})
-                              </AccordionTrigger>
-                              <AccordionContent>
-                                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-4">
-                                  {service.interconsulta.map((consult, idx) => (
-                                    <div 
-                                      key={idx} 
-                                      className="p-3 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors text-center group"
-                                    >
-                                      <Users className="h-5 w-5 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                                      <h4 className="font-semibold text-sm mb-1">{consult.name}</h4>
-                                      <p className="text-xs text-muted-foreground">{consult.description}</p>
-                                    </div>
-                                  ))}
-                                </div>
-                              </AccordionContent>
-                            </AccordionItem>
-                          )}
-                        </Accordion>
-                        
-                        {/* CTA Button */}
-                        <div className="mt-6 pt-6 border-t">
-                          <Button 
-                            size="lg"
-                            className="w-full sm:w-auto"
-                            onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                          >
-                            <MessageCircle className="h-5 w-5 mr-2" />
-                            Solicitar Información
-                          </Button>
-                        </div>
-                      </CardContent>
+                  {/* Service Header */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0">
+                      <ServiceIcon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h2 className="font-display text-3xl font-bold">{service.title}</h2>
+                      <p className="text-muted-foreground mt-1">{service.description}</p>
                     </div>
                   </div>
-                </Card>
+
+                  {/* Sub-services Grid */}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    {service.subServices.map((sub, idx) => {
+                      const SubIcon = sub.icon;
+                      return (
+                        <Card 
+                          key={idx} 
+                          className="hover:shadow-medical transition-all duration-300 group"
+                        >
+                          <CardHeader className="pb-3">
+                            <div className="flex items-start gap-3">
+                              <div className="w-10 h-10 rounded-lg bg-gradient-secondary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <SubIcon className="h-5 w-5 text-secondary-foreground" />
+                              </div>
+                              <CardTitle className="text-base leading-tight">{sub.name}</CardTitle>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <CardDescription className="text-sm leading-relaxed">
+                              {sub.description}
+                            </CardDescription>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+
+                  {/* Interconsulta Section */}
+                  {service.interconsulta && (
+                    <div className="mt-8">
+                      <h3 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
+                        <Users className="h-5 w-5 text-primary" />
+                        Interconsultas Disponibles
+                      </h3>
+                      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                        {service.interconsulta.map((consult, idx) => (
+                          <div 
+                            key={idx} 
+                            className="p-4 rounded-lg bg-muted hover:bg-muted/80 transition-colors text-center"
+                          >
+                            <h4 className="font-semibold text-sm mb-1">{consult.name}</h4>
+                            <p className="text-xs text-muted-foreground">{consult.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Divider */}
+                  {index < services.length - 1 && (
+                    <div className="mt-12 border-t border-border" />
+                  )}
+                </div>
               );
             })}
           </div>
@@ -328,106 +263,55 @@ const ExamenesOcupacionales = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-secondary/5 to-background">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <Card className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 border-2 border-primary/20 shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]" />
-              <CardHeader className="text-center relative z-10 pt-12">
-                <Badge variant="secondary" className="mb-4 mx-auto">
-                  Atención Profesional
-                </Badge>
-                <CardTitle className="text-3xl md:text-4xl mb-4">
-                  ¿Por qué elegirnos?
-                </CardTitle>
-                <CardDescription className="text-lg">
-                  Más de 10 años de experiencia en salud ocupacional
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="relative z-10 pb-12">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-6">
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Personal Certificado</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Médicos ocupacionales certificados por MINSA
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Equipamiento Moderno</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Tecnología de última generación
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Resultados Rápidos</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Entrega de certificados en 24-48 horas hábiles
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-6">
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Dos Sedes Disponibles</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Atención en Challhuahuacho y Cusco
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Convenios Corporativos</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Precios especiales para empresas y organizaciones
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-4 group hover-scale">
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <div className="h-3 w-3 rounded-full bg-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Servicio In-House</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          Atención en las instalaciones de su empresa
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-3xl font-bold mb-6">¿Por Qué Elegirnos?</h2>
+            <p className="text-muted-foreground mb-12">
+              Más de 13 años de experiencia en salud ocupacional y asistencial
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="space-y-3">
+                <div className="w-16 h-16 rounded-xl bg-gradient-secondary flex items-center justify-center mx-auto">
+                  <Shield className="h-8 w-8 text-secondary-foreground" />
                 </div>
-                <div className="mt-10 flex justify-center">
-                  <Button 
-                    size="lg"
-                    onClick={() => window.open('https://wa.me/51929312370', '_blank')}
-                  >
-                    <MessageCircle className="h-5 w-5 mr-2" />
-                    Contáctanos ahora
-                  </Button>
+                <h3 className="font-display font-semibold text-xl">Personal Certificado</h3>
+                <p className="text-muted-foreground">
+                  Médicos ocupacionales certificados por MINSA
+                </p>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mx-auto">
+                  <Activity className="h-8 w-8 text-primary-foreground" />
                 </div>
-              </CardContent>
-            </Card>
+                <h3 className="font-display font-semibold text-xl">Equipamiento Moderno</h3>
+                <p className="text-muted-foreground">
+                  Tecnología de última generación para diagnósticos precisos
+                </p>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="w-16 h-16 rounded-xl bg-gradient-secondary flex items-center justify-center mx-auto">
+                  <Heart className="h-8 w-8 text-secondary-foreground" />
+                </div>
+                <h3 className="font-display font-semibold text-xl">Atención Integral</h3>
+                <p className="text-muted-foreground">
+                  Servicios completos en dos sedes: Challhuahuacho y Cusco
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <Button 
+                size="lg"
+                onClick={() => window.open('https://wa.me/51929312370', '_blank')}
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Contáctanos ahora
+              </Button>
+            </div>
           </div>
         </div>
       </section>
