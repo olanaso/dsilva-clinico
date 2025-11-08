@@ -12,7 +12,7 @@ const Navigation = () => {
     { name: "Inicio", path: "/" },
     { name: "Nosotros", path: "/nosotros" },
     { name: "Especialidades", path: "/especialidades" },
-    { name: "Exámenes Ocupacionales", path: "/examenes-ocupacionales" },
+    { name: "Servicios", path: "/servicios" },
     { name: "Preguntas Frecuentes", path: "/preguntas-frecuentes" },
     { name: "Contacto", path: "/contacto" },
   ];
@@ -39,7 +39,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={logo} alt="D'Silva Policlínico" className="h-14 w-14 transition-transform group-hover:scale-105 drop-shadow-lg" />
+            <img
+              src={logo}
+              alt="D'Silva Policlínico"
+              className="h-14 w-14 transition-transform group-hover:scale-105 drop-shadow-lg"
+            />
             <div>
               <h1 className="font-display font-bold text-xl text-foreground">D'SILVA</h1>
               <p className="text-xs text-accent font-semibold">Policlínico</p>
@@ -61,7 +65,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild variant="outline" className="ml-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground">
+            <Button
+              asChild
+              variant="outline"
+              className="ml-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground"
+            >
               <Link to="/resultados-online" className="flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 Resultados en Línea
@@ -92,16 +100,18 @@ const Navigation = () => {
                   to={item.path}
                   onClick={() => setIsOpen(false)}
                   className={`px-4 py-3 rounded-lg font-medium transition-all ${
-                    isActive(item.path)
-                      ? "bg-secondary text-secondary-foreground"
-                      : "text-foreground hover:bg-muted"
+                    isActive(item.path) ? "bg-secondary text-secondary-foreground" : "text-foreground hover:bg-muted"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
               <Button asChild variant="outline" className="mt-2 border-secondary text-secondary">
-                <Link to="/resultados-online" onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2">
+                <Link
+                  to="/resultados-online"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2"
+                >
                   <FileText className="h-4 w-4" />
                   Resultados en Línea
                 </Link>
