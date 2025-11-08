@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle } from "lucide-react";
+import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle, Ambulance, Glasses, Building2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import SpecialtyCard from "@/components/SpecialtyCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,66 +9,53 @@ import heroImage from "@/assets/hero-image.jpg";
 import teamImage from "@/assets/team-image.jpg";
 import medicinaGeneralImg from "@/assets/specialties/medicina-general.jpg";
 import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jpg";
-import odontologiaImg from "@/assets/specialties/odontologia.jpg";
-import psicologiaImg from "@/assets/specialties/psicologia.jpg";
+import laboratorioImg from "@/assets/specialties/laboratorio.jpg";
 import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
-import rayosXImg from "@/assets/specialties/rayos-x.jpg";
+import farmaciaImg from "@/assets/specialties/farmacia.jpg";
 
 const Index = () => {
-  const specialties = [
-    {
-      icon: Stethoscope,
-      title: "Medicina General",
-      description: "Atención integral para toda la familia con médicos altamente calificados.",
-      fullDescription: "Atención integral para toda la familia con médicos altamente calificados.",
-      objectives: "Brindar atención médica general de calidad",
-      responsible: "Dr. Médico General",
-      image: medicinaGeneralImg
-    },
+  const services = [
     {
       icon: Heart,
-      title: "Medicina Ocupacional",
-      description: "Especialistas en salud ocupacional con más de 13 años de experiencia.",
-      fullDescription: "Especialistas en salud ocupacional con más de 13 años de experiencia.",
-      objectives: "Cuidar la salud de los trabajadores",
-      responsible: "Dr. Medicina Ocupacional",
+      title: "Examen Médico Ocupacional",
+      description: "Evaluaciones médicas para ingreso, periódicos, retiro y más.",
       image: medicinaOcupacionalImg
     },
     {
-      icon: Brain,
-      title: "Odontología",
-      description: "Salud dental integral con los mejores especialistas y tecnología moderna.",
-      fullDescription: "Salud dental integral con los mejores especialistas y tecnología moderna.",
-      objectives: "Cuidado dental completo",
-      responsible: "Dr. Odontólogo",
-      image: odontologiaImg
+      icon: Microscope,
+      title: "Levantamiento de Observación",
+      description: "Servicios especializados de odontología, laboratorio, audiometría y más.",
+      image: laboratorioImg
     },
     {
-      icon: Heart,
-      title: "Psicología",
-      description: "Atención psicológica profesional para tu bienestar emocional y mental.",
-      fullDescription: "Atención psicológica profesional para tu bienestar emocional y mental.",
-      objectives: "Salud mental integral",
-      responsible: "Psicólogo Clínico",
-      image: psicologiaImg
+      icon: Stethoscope,
+      title: "Asistencia",
+      description: "Consultas médicas, odontológicas, psicológicas e imagenología.",
+      image: medicinaGeneralImg
     },
     {
-      icon: Eye,
-      title: "Oftalmología",
-      description: "Cuidado especializado de la salud visual y tratamiento de enfermedades oculares.",
-      fullDescription: "Cuidado especializado de la salud visual y tratamiento de enfermedades oculares.",
-      objectives: "Salud visual óptima",
-      responsible: "Dr. Oftalmólogo",
+      icon: Shield,
+      title: "Vigilancia Ocupacional",
+      description: "Monitoreo y control de salud en el ambiente laboral.",
       image: oftalmologiaImg
     },
     {
-      icon: Microscope,
-      title: "Rayos X",
-      description: "Radiología digital con tecnología de punta para diagnósticos precisos.",
-      fullDescription: "Radiología digital con tecnología de punta para diagnósticos precisos.",
-      objectives: "Diagnósticos por imágenes",
-      responsible: "Tecnólogo Médico",
-      image: rayosXImg
+      icon: Ambulance,
+      title: "Servicio de Ambulancia",
+      description: "Atención de emergencias y traslados médicos.",
+      image: medicinaOcupacionalImg
+    },
+    {
+      icon: Glasses,
+      title: "Óptica",
+      description: "Servicios de oftalmología y productos ópticos de calidad.",
+      image: oftalmologiaImg
+    },
+    {
+      icon: Pill,
+      title: "Farmacia",
+      description: "Medicamentos y productos farmacéuticos.",
+      image: farmaciaImg
     },
   ];
 
@@ -201,32 +187,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Specialties Section */}
+      {/* Services Section */}
       <section className="py-24 bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <div className="inline-block mb-4">
-              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Excelencia Médica</span>
+              <span className="text-secondary font-semibold text-sm uppercase tracking-wider">Soluciones Integrales</span>
             </div>
             <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              Nuestras Especialidades Médicas
+              Nuestros Servicios
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Contamos con un equipo multidisciplinario de especialistas para atender todas tus necesidades de salud
+              Servicios especializados en salud ocupacional y asistencial con los más altos estándares de calidad
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {specialties.map((specialty, index) => (
-              <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                <SpecialtyCard {...specialty} />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                className="group overflow-hidden hover:shadow-medical transition-all duration-300 hover:-translate-y-2 animate-fade-in border-border/50 hover:border-secondary/50"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-overlay group-hover:opacity-70 transition-opacity" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 rounded-xl bg-secondary/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <service.icon className="h-6 w-6 text-secondary-foreground" />
+                    </div>
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-lg group-hover:text-secondary transition-colors">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-gradient-hero hover:opacity-90 shadow-medical hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-              <Link to="/especialidades">Ver Todas las Especialidades</Link>
+              <Link to="/contacto">Agendar Cita</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+              <Link to="/examenes-ocupacionales">Ver Todos los Servicios</Link>
             </Button>
           </div>
         </div>
