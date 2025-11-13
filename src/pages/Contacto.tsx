@@ -31,8 +31,9 @@ const Contacto = () => {
     acceptTerms: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validar con zod
@@ -55,11 +56,49 @@ const Contacto = () => {
     }
     
     setErrors({});
-    toast({
-      title: "Mensaje enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "", acceptTerms: false });
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('https://correo.clinicadsilva.com/smtp_mail.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: "jduchman10@gmail.com",
+          subject: `Nueva consulta de ${formData.name}`,
+          clientName: formData.name,
+          clientEmail: formData.email,
+          clientPhone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.ok) {
+        toast({
+          title: "Mensaje enviado",
+          description: "Nos pondremos en contacto contigo pronto.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "", acceptTerms: false });
+      } else {
+        toast({
+          title: "Error al enviar",
+          description: data.message || "No se pudo enviar el mensaje. Por favor, intenta de nuevo.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Error sending form:', error);
+      toast({
+        title: "Error de conexión",
+        description: "No se pudo conectar con el servidor. Por favor, intenta de nuevo más tarde.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -333,10 +372,10 @@ const Contacto = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-gradient-hero hover:opacity-90 shadow-medical"
-                    disabled={!formData.acceptTerms}
+                    disabled={!formData.acceptTerms || isSubmitting}
                   >
                     <Send className="mr-2 h-4 w-4" />
-                    Enviar Mensaje
+                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                   </Button>
                 </form>
               </CardContent>
