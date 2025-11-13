@@ -30,7 +30,8 @@ import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
 import odontologiaImg from "@/assets/specialties/odontologia.jpg";
 import psicologiaImg from "@/assets/specialties/psicologia.jpg";
 import medicinaGeneralImg from "@/assets/specialties/medicina-general.jpg";
-import rayosXImg from "@/assets/specialties/rayos-x.jpg";
+import rayosXImg from "@/assets/specialties/rayos-x-procedimiento.jpg";
+import consultaMedicaImg from "@/assets/specialties/consulta-medica.jpg";
 import ecografiaImg from "@/assets/specialties/ecografia.jpg";
 import farmaciaImg from "@/assets/specialties/farmacia.jpg";
 

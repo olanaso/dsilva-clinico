@@ -12,6 +12,8 @@ import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jp
 import laboratorioImg from "@/assets/specialties/laboratorio.jpg";
 import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
 import farmaciaImg from "@/assets/specialties/farmacia.jpg";
+import consultaMedicaImg from "@/assets/specialties/consulta-medica.jpg";
+import rayosXImg from "@/assets/specialties/rayos-x-procedimiento.jpg";
 import preOcupacionalImg from "@/assets/exams/pre-ocupacional.jpg";
 import periodicoImg from "@/assets/exams/periodico.jpg";
 import retiroImg from "@/assets/exams/retiro.jpg";
@@ -35,7 +37,7 @@ const Index = () => {
       icon: Stethoscope,
       title: "Asistencia",
       description: "Consultas médicas, odontológicas, psicológicas e imagenología.",
-      image: medicinaGeneralImg
+      image: consultaMedicaImg
     },
     {
       icon: Shield,
