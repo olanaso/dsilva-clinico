@@ -12,6 +12,10 @@ import medicinaOcupacionalImg from "@/assets/specialties/medicina-ocupacional.jp
 import laboratorioImg from "@/assets/specialties/laboratorio.jpg";
 import oftalmologiaImg from "@/assets/specialties/oftalmologia.jpg";
 import farmaciaImg from "@/assets/specialties/farmacia.jpg";
+import preOcupacionalImg from "@/assets/exams/pre-ocupacional.jpg";
+import periodicoImg from "@/assets/exams/periodico.jpg";
+import retiroImg from "@/assets/exams/retiro.jpg";
+import reintegroImg from "@/assets/exams/reintegro.jpg";
 
 const Index = () => {
   const services = [
@@ -63,22 +67,26 @@ const Index = () => {
     {
       icon: UserCheck,
       title: "Examen Pre-Ocupacional",
-      description: "Evaluación médica antes del ingreso laboral para determinar la aptitud del trabajador."
+      description: "Evaluación médica antes del ingreso laboral para determinar la aptitud del trabajador.",
+      image: preOcupacionalImg
     },
     {
       icon: Calendar,
       title: "Examen Periódico",
-      description: "Control médico anual durante la relación laboral para prevenir enfermedades ocupacionales."
+      description: "Control médico anual durante la relación laboral para prevenir enfermedades ocupacionales.",
+      image: periodicoImg
     },
     {
       icon: UserX,
       title: "Examen de Retiro",
-      description: "Evaluación final al término del contrato laboral para detectar posibles enfermedades."
+      description: "Evaluación final al término del contrato laboral para detectar posibles enfermedades.",
+      image: retiroImg
     },
     {
       icon: RefreshCw,
       title: "Examen de Reintegro",
-      description: "Valoración médica tras ausencia prolongada para garantizar capacidad laboral."
+      description: "Valoración médica tras ausencia prolongada para garantizar capacidad laboral.",
+      image: reintegroImg
     },
   ];
 
@@ -264,13 +272,23 @@ const Index = () => {
             {occupationalExams.map((exam, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-medical transition-all duration-300 hover:-translate-y-2 animate-fade-in bg-gradient-card border-2 border-border/50 hover:border-primary/50"
+                className="group overflow-hidden hover:shadow-medical transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 border-border/50 hover:border-primary/50"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-xl bg-gradient-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <exam.icon className="h-7 w-7 text-secondary-foreground" />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={exam.image}
+                    alt={exam.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-overlay group-hover:opacity-70 transition-opacity" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 rounded-xl bg-secondary/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <exam.icon className="h-6 w-6 text-secondary-foreground" />
+                    </div>
                   </div>
+                </div>
+                <CardHeader>
                   <CardTitle className="text-lg">{exam.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
