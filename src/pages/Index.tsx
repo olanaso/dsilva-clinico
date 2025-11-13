@@ -431,10 +431,16 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 bg-gradient-hero text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-        </div>
+      <div className="absolute inset-0">
+        <img 
+          src={heroImage} 
+          alt="Background" 
+          className="w-full h-full object-cover opacity-20 scale-110 transition-transform duration-[2000ms] hover:scale-100" 
+        />
+        <div className="absolute inset-0 bg-gradient-hero/80" />
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-secondary/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+      </div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-3xl mx-auto animate-fade-in">
             <h2 className="font-display text-5xl md:text-6xl font-bold mb-6">¿Necesitas una Consulta?</h2>
