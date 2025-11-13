@@ -433,7 +433,7 @@ const Index = () => {
       <section className="relative py-24 bg-gradient-hero text-primary-foreground overflow-hidden">
       <div className="absolute inset-0">
         <img 
-          src={heroImage} 
+          src={teamImage} 
           alt="Background" 
           className="w-full h-full object-cover opacity-20 scale-110 transition-transform duration-[2000ms] hover:scale-100" 
         />
