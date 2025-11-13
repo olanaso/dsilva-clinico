@@ -26,7 +26,7 @@ const Navigation = () => {
         <div className="container mx-auto px-4 flex justify-end items-center gap-6 text-sm">
           <a href="tel:+51987654321" className="flex items-center gap-2 hover:text-secondary transition-colors">
             <Phone className="h-4 w-4" />
-            <span>+51 987 654 321</span>
+            <span>+51 929 312 370</span>
           </a>
           <a href="mailto:info@dsilva.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
             <Mail className="h-4 w-4" />
