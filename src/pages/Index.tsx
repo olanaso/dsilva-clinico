@@ -337,8 +337,15 @@ const Index = () => {
       </section>
 
       {/* Locations Section */}
-      <section className="py-24 bg-gradient-to-b from-secondary/10 to-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-24 bg-gradient-to-b from-secondary/10 to-background overflow-hidden">
+        <div className="absolute inset-0 opacity-30 pointer-events-none z-0">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-72.2003%2C-14.3178%2C-71.6003%2C-13.7178&layer=mapnik&marker=-14.0178,-71.9003"
+            className="w-full h-full border-0 grayscale"
+            title="Mapa de ubicaciones"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <Badge variant="secondary" className="mb-4">
               Ubicaciones
