@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle, Ambulance, Glasses, Building2 } from "lucide-react";
+import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle, Ambulance, Glasses, Building2, Activity, Ear, Wind } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,12 @@ import preOcupacionalImg from "@/assets/exams/pre-ocupacional.jpg";
 import periodicoImg from "@/assets/exams/periodico.jpg";
 import retiroImg from "@/assets/exams/retiro.jpg";
 import reintegroImg from "@/assets/exams/reintegro.jpg";
+import audiometriaImg from "@/assets/specialties/audiometria.jpg";
+import ecografiaImg from "@/assets/specialties/ecografia.jpg";
+import electrocardiogramaImg from "@/assets/specialties/electrocardiograma.jpg";
+import espirometriaImg from "@/assets/specialties/espirometria.jpg";
+import odontologiaImg from "@/assets/specialties/odontologia.jpg";
+import psicologiaImg from "@/assets/specialties/psicologia.jpg";
 
 const Index = () => {
   const services = [
@@ -89,6 +95,57 @@ const Index = () => {
       title: "Examen de Reintegro",
       description: "Valoración médica tras ausencia prolongada para garantizar capacidad laboral.",
       image: reintegroImg
+    },
+  ];
+
+  const specialties = [
+    {
+      icon: Microscope,
+      title: "Laboratorio Clínico",
+      description: "Análisis clínicos especializados con equipos de última generación.",
+      image: laboratorioImg
+    },
+    {
+      icon: Activity,
+      title: "Rayos X",
+      description: "Servicios de imagenología con tecnología digital avanzada.",
+      image: rayosXImg
+    },
+    {
+      icon: Ear,
+      title: "Audiometría",
+      description: "Evaluación completa de la capacidad auditiva ocupacional.",
+      image: audiometriaImg
+    },
+    {
+      icon: Wind,
+      title: "Espirometría",
+      description: "Pruebas de función pulmonar para evaluar capacidad respiratoria.",
+      image: espirometriaImg
+    },
+    {
+      icon: Heart,
+      title: "Electrocardiograma",
+      description: "Estudios cardiológicos para diagnóstico y prevención.",
+      image: electrocardiogramaImg
+    },
+    {
+      icon: Eye,
+      title: "Ecografía",
+      description: "Estudios de ultrasonido con equipos de alta resolución.",
+      image: ecografiaImg
+    },
+    {
+      icon: Brain,
+      title: "Psicología",
+      description: "Evaluaciones psicológicas ocupacionales y asistenciales.",
+      image: psicologiaImg
+    },
+    {
+      icon: Stethoscope,
+      title: "Odontología",
+      description: "Atención odontológica integral y preventiva.",
+      image: odontologiaImg
     },
   ];
 
@@ -255,23 +312,23 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Occupational Exams Section */}
+      {/* Specialties Section */}
       <section className="py-24 bg-gradient-to-b from-muted to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in">
             <Badge variant="secondary" className="mb-4">
-              Salud Ocupacional
+              Atención Especializada
             </Badge>
             <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              Exámenes Médicos Ocupacionales
+              Nuestras Especialidades
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Más de 13 años de experiencia brindando servicios de medicina ocupacional a importantes empresas del país
+              Contamos con profesionales altamente capacitados y equipos de última tecnología en todas nuestras especialidades
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
-            {occupationalExams.map((exam, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+            {specialties.map((specialty, index) => (
               <Card
                 key={index}
                 className="group overflow-hidden hover:shadow-medical transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 border-border/50 hover:border-primary/50"
@@ -279,22 +336,22 @@ const Index = () => {
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={exam.image}
-                    alt={exam.title}
+                    src={specialty.image}
+                    alt={specialty.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-overlay group-hover:opacity-70 transition-opacity" />
                   <div className="absolute bottom-4 left-4">
                     <div className="w-12 h-12 rounded-xl bg-secondary/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <exam.icon className="h-6 w-6 text-secondary-foreground" />
+                      <specialty.icon className="h-6 w-6 text-secondary-foreground" />
                     </div>
                   </div>
                 </div>
                 <CardHeader>
-                  <CardTitle className="text-lg">{exam.title}</CardTitle>
+                  <CardTitle className="text-lg">{specialty.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{exam.description}</p>
+                  <p className="text-sm text-muted-foreground">{specialty.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -302,7 +359,7 @@ const Index = () => {
 
           <div className="text-center">
             <Button asChild size="lg" className="bg-gradient-hero hover:opacity-90 shadow-medical hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-              <Link to="/examenes-ocupacionales">Ver Todos los Exámenes</Link>
+              <Link to="/especialidades">Ver Todas las Especialidades</Link>
             </Button>
           </div>
         </div>
