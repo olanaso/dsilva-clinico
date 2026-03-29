@@ -49,7 +49,6 @@ const ResultadosOnline = () => {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <img src={logo} alt="D'Silva Clínica" className="h-20 w-auto" />
-            </div>
           </div>
 
           <div className="border-b border-border mb-6"></div>
