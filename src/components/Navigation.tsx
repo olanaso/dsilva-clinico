@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, FileText } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-new.png";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -41,13 +41,9 @@ const Navigation = () => {
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={logo}
-              alt="D'Silva Policlínico"
-              className="h-14 w-14 transition-transform group-hover:scale-105 drop-shadow-lg"
+              alt="D'Silva Clínica"
+              className="h-16 w-auto transition-all duration-500 group-hover:scale-110 drop-shadow-lg animate-[fadeSlideIn_0.6s_ease-out]"
             />
-            <div>
-              <h1 className="font-display font-bold text-xl text-foreground">D'SILVA</h1>
-              <p className="text-xs text-accent font-semibold">Policlínico</p>
-            </div>
           </Link>
 
           {/* Desktop menu */}
