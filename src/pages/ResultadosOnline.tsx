@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-new.png";
 
 const ResultadosOnline = () => {
   const { toast } = useToast();
@@ -48,12 +48,7 @@ const ResultadosOnline = () => {
         <CardContent className="p-8 md:p-12">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="Policlínico D'Silva" className="h-16 w-16" />
-              <div>
-                <h1 className="font-display font-bold text-2xl text-primary">D'SILVA</h1>
-                <p className="text-xs text-muted-foreground uppercase tracking-wide">Salud Ocupacional</p>
-              </div>
+            <img src={logo} alt="D'Silva Clínica" className="h-20 w-auto" />
             </div>
           </div>
 
