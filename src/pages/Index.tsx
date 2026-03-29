@@ -1,5 +1,6 @@
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle, Ambulance, Glasses, Building2, Activity, Ear, Wind } from "lucide-react";
+import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, Shield, FileText, UserCheck, Calendar, UserX, RefreshCw, MapPin, Award, Users, Target, Phone, Mail, MessageCircle, Ambulance, Glasses, Building2, Activity, Ear, Wind, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -80,48 +81,153 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      {/* Hero Section — parallax slow zoom bg */}
-      <section className="relative min-h-[750px] flex items-center bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Hero" className="w-full h-full object-cover opacity-30 parallax-hero" />
-          <div className="absolute inset-0 bg-gradient-overlay" />
-        </div>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-1/2 -right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl animate-float" />
-          <div className="absolute -bottom-1/2 -left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-        <div className="container mx-auto px-4 py-28 relative z-10">
-          <div className="max-w-3xl" style={{ animation: 'fadeSlideIn 1s cubic-bezier(0.16,1,0.3,1) both' }}>
-            <div className="inline-block mb-6 px-4 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
-              <span className="text-secondary-foreground font-semibold text-sm">✨ Centro Médico de Excelencia</span>
+      {/* Hero Slider Section */}
+      {(() => {
+        const slides = [
+          {
+            image: heroImage,
+            badge: "✨ Centro Médico de Excelencia",
+            title: <>Tu Salud,<br /><span className="bg-gradient-to-r from-secondary to-primary-foreground bg-clip-text text-transparent">Nuestra Prioridad</span></>,
+            description: "Centro médico especializado con atención integral. Brindamos servicios de salud de calidad con profesionales expertos y tecnología de punta.",
+          },
+          {
+            image: teamImage,
+            badge: "🏥 Medicina Ocupacional",
+            title: <>Exámenes<br /><span className="bg-gradient-to-r from-secondary to-primary-foreground bg-clip-text text-transparent">Ocupacionales</span></>,
+            description: "Realizamos exámenes médicos pre-ocupacionales, periódicos, de retiro y reintegro con los más altos estándares de calidad.",
+          },
+          {
+            image: consultaMedicaImg,
+            badge: "⚕️ Especialidades Médicas",
+            title: <>Atención<br /><span className="bg-gradient-to-r from-secondary to-primary-foreground bg-clip-text text-transparent">Especializada</span></>,
+            description: "Contamos con especialistas en laboratorio, rayos X, audiometría, espirometría, ecografía, psicología, odontología y más.",
+          },
+        ];
+
+        const [current, setCurrent] = useState(0);
+        const [isTransitioning, setIsTransitioning] = useState(false);
+
+        const goTo = useCallback((index: number) => {
+          if (isTransitioning) return;
+          setIsTransitioning(true);
+          setCurrent(index);
+          setTimeout(() => setIsTransitioning(false), 800);
+        }, [isTransitioning]);
+
+        const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo, slides.length]);
+        const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo, slides.length]);
+
+        useEffect(() => {
+          const timer = setInterval(next, 6000);
+          return () => clearInterval(timer);
+        }, [next]);
+
+        return (
+          <section className="relative min-h-[750px] flex items-center overflow-hidden bg-primary">
+            {/* Background images */}
+            {slides.map((slide, i) => (
+              <div
+                key={i}
+                className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                style={{ opacity: i === current ? 1 : 0 }}
+              >
+                <img
+                  src={slide.image}
+                  alt=""
+                  className="w-full h-full object-cover opacity-30 parallax-hero"
+                />
+                <div className="absolute inset-0 bg-gradient-overlay" />
+              </div>
+            ))}
+
+            {/* Floating orbs */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute -top-1/2 -right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl animate-float" />
+              <div className="absolute -bottom-1/2 -left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
             </div>
-            <h1 className="font-display text-6xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
-              Tu Salud,<br />
-              <span className="bg-gradient-to-r from-secondary to-primary-foreground bg-clip-text text-transparent">
-                Nuestra Prioridad
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/90 mb-10 leading-relaxed">
-              Centro médico especializado con atención integral. Brindamos servicios de salud de calidad con
-              profesionales expertos y tecnología de punta.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="btn-ripple bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-glow hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-                <Link to="/contacto">Agendar Cita</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="btn-ripple bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-                <Link to="/especialidades">Ver Especialidades</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="btn-ripple bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
-                <Link to="/resultados-online" className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
-                  Resultados en Línea
-                </Link>
-              </Button>
+
+            {/* Content */}
+            <div className="container mx-auto px-4 py-28 relative z-10">
+              {slides.map((slide, i) => (
+                <div
+                  key={i}
+                  className="max-w-3xl transition-all duration-700 ease-in-out absolute"
+                  style={{
+                    opacity: i === current ? 1 : 0,
+                    transform: i === current ? 'translateY(0)' : 'translateY(30px)',
+                    pointerEvents: i === current ? 'auto' : 'none',
+                  }}
+                >
+                  <div className="inline-block mb-6 px-4 py-2 bg-secondary/20 backdrop-blur-sm rounded-full border border-secondary/30">
+                    <span className="text-secondary-foreground font-semibold text-sm">{slide.badge}</span>
+                  </div>
+                  <h1 className="font-display text-6xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+                    {slide.title}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-primary-foreground/90 mb-10 leading-relaxed">
+                    {slide.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Button asChild size="lg" className="btn-ripple bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-glow hover:shadow-hover transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+                      <Link to="/contacto">Agendar Cita</Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="btn-ripple bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+                      <Link to="/especialidades">Ver Especialidades</Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="btn-ripple bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 backdrop-blur transition-all duration-300 hover:scale-105 text-lg px-8 py-6">
+                      <Link to="/resultados-online" className="flex items-center gap-2">
+                        <FileText className="h-5 w-5" />
+                        Resultados en Línea
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              ))}
+              {/* Spacer to maintain height */}
+              <div className="max-w-3xl invisible" aria-hidden="true">
+                <div className="mb-6 px-4 py-2"><span className="text-sm">.</span></div>
+                <h1 className="font-display text-6xl md:text-7xl font-bold mb-6 leading-tight">Placeholder<br />Text</h1>
+                <p className="text-xl md:text-2xl mb-10">Placeholder description text for height.</p>
+                <div className="flex flex-wrap gap-4">
+                  <Button size="lg" className="text-lg px-8 py-6">.</Button>
+                  <Button size="lg" className="text-lg px-8 py-6">.</Button>
+                  <Button size="lg" className="text-lg px-8 py-6">.</Button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+
+            {/* Navigation arrows */}
+            <button
+              onClick={prev}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            <button
+              onClick={next}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 hover:scale-110"
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Dots indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className={`h-3 rounded-full transition-all duration-500 ${
+                    i === current ? "w-10 bg-secondary shadow-glow" : "w-3 bg-primary-foreground/40 hover:bg-primary-foreground/60"
+                  }`}
+                  aria-label={`Ir al banner ${i + 1}`}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Features Section */}
       <section className="py-24 bg-muted relative overflow-hidden">
