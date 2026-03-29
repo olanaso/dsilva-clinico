@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-new.png";
 import dnaHelix from "@/assets/dna-helix.svg";
 
 const Footer = () => {
@@ -31,11 +31,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Policlínico Ocupacional Challhuahuacho" className="h-14 w-14 drop-shadow-lg" />
-              <div>
-                <h3 className="font-display font-bold text-lg">D'SILVA</h3>
-                <p className="text-xs text-secondary">Policlínico Ocupacional</p>
-              </div>
+              <img src={logo} alt="D'Silva Clínica" className="h-16 w-auto drop-shadow-lg" />
             </div>
             <p className="text-sm opacity-90">
               Policlínico Ocupacional Challhuahuacho SAC - Tu salud es nuestra prioridad.
