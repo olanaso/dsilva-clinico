@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
-import logo from "@/assets/logo-new.png";
+import logo from "@/assets/logoblanco.png";
 import dnaHelix from "@/assets/dna-helix.svg";
 
 const Footer = () => {
