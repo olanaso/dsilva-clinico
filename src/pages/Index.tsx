@@ -86,7 +86,7 @@ const Index = () => {
 
       {/* Hero Slider Section */}
       {(() => {
-        const slides = [
+        const defaultSlides = [
           {
             image: heroImage,
             badge: "✨ Centro Médico de Excelencia",
@@ -107,8 +107,32 @@ const Index = () => {
           },
         ];
 
+        const [wpBanners, setWpBanners] = useState<WPPost[]>([]);
+
+        useEffect(() => {
+          fetchPostsByCategory(WP_CATEGORIES.banner, 6).then(({ posts }) => {
+            setWpBanners(posts.filter((p) => getPostImage(p, true)));
+          });
+        }, []);
+
+        const slides = wpBanners.length > 0
+          ? wpBanners.map((post) => {
+              const title = stripHtml(post.title.rendered);
+              return {
+                image: getPostImage(post, true),
+                badge: "🏥 Policlínico D'SILVA",
+                title: <>{title}</>,
+                description: stripHtml(post.excerpt.rendered) || "Conoce más sobre nuestros servicios médicos.",
+              };
+            })
+          : defaultSlides;
+
         const [current, setCurrent] = useState(0);
         const [isTransitioning, setIsTransitioning] = useState(false);
+
+        useEffect(() => {
+          setCurrent(0);
+        }, [wpBanners.length]);
 
         const goTo = useCallback((index: number) => {
           if (isTransitioning) return;
