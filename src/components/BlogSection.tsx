@@ -4,29 +4,20 @@ import { Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import {
+  WPPost,
+  fetchPostsByCategory,
+  getPostCategory,
+  getPostImage,
+  stripHtml,
+  WP_CATEGORIES,
+} from "@/lib/wp";
 
-export interface WPPost {
-  id: number;
-  date: string;
-  link: string;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  _embedded?: {
-    "wp:featuredmedia"?: Array<{ source_url?: string; alt_text?: string }>;
-    "wp:term"?: Array<Array<{ name: string }>>;
-  };
-}
+// Re-export for back-compat with existing imports
+export type { WPPost } from "@/lib/wp";
+export { stripHtml, getPostImage, getPostCategory } from "@/lib/wp";
 
 const MONTHS_ES = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
-
-export const stripHtml = (html: string) =>
-  html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
-
-export const getPostImage = (post: WPPost) =>
-  post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
-
-export const getPostCategory = (post: WPPost) =>
-  post._embedded?.["wp:term"]?.[0]?.[0]?.name || "BLOG";
 
 export const PostCard = ({ post, delay = 0 }: { post: WPPost; delay?: number }) => {
   const { ref, isVisible } = useScrollAnimation(0.12);
@@ -82,10 +73,8 @@ const BlogSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://blog.varmarsac.com/wp-json/wp/v2/posts?_embed&per_page=3")
-      .then((r) => r.json())
-      .then((data) => setPosts(Array.isArray(data) ? data : []))
-      .catch(() => setPosts([]))
+    fetchPostsByCategory(WP_CATEGORIES.blog, 3)
+      .then(({ posts }) => setPosts(posts))
       .finally(() => setLoading(false));
   }, []);
 
