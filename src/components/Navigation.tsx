@@ -14,6 +14,7 @@ const Navigation = () => {
     { name: "Especialidades", path: "/especialidades" },
     { name: "Servicios", path: "/servicios" },
     { name: "Preguntas Frecuentes", path: "/preguntas-frecuentes" },
+    { name: "Blog", path: "/blog" },
     { name: "Contacto", path: "/contacto" },
   ];
 
