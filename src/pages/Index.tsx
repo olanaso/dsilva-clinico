@@ -571,6 +571,7 @@ const Index = () => {
         </div>
       </section>
 
+      <AnnouncementModal />
       <Footer />
     </div>
   );
