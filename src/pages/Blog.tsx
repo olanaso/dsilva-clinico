@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { PostCard, WPPost } from "@/components/BlogSection";
 
+import { fetchPostsByCategory, WP_CATEGORIES } from "@/lib/wp";
+
 const PER_PAGE = 9;
 
 const Blog = () => {
@@ -17,16 +19,12 @@ const Blog = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://blog.varmarsac.com/wp-json/wp/v2/posts?_embed&per_page=${PER_PAGE}&page=${page}`)
-      .then(async (r) => {
-        const tp = parseInt(r.headers.get("X-WP-TotalPages") || "1", 10);
-        const t = parseInt(r.headers.get("X-WP-Total") || "0", 10);
-        setTotalPages(isNaN(tp) ? 1 : tp);
-        setTotal(isNaN(t) ? 0 : t);
-        const data = await r.json();
-        return data;
+    fetchPostsByCategory(WP_CATEGORIES.blog, PER_PAGE, page)
+      .then(({ posts, totalPages, total }) => {
+        setPosts(posts);
+        setTotalPages(totalPages);
+        setTotal(total);
       })
-      .then((data) => setPosts(Array.isArray(data) ? data : []))
       .catch(() => setPosts([]))
       .finally(() => {
         setLoading(false);

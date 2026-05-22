@@ -4,6 +4,8 @@ import { Heart, Stethoscope, Eye, Microscope, Brain, Pill, CheckCircle, Clock, S
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogSection from "@/components/BlogSection";
+import AnnouncementModal from "@/components/AnnouncementModal";
+import { fetchPostsByCategory, getPostImage, stripHtml, WP_CATEGORIES, WPPost } from "@/lib/wp";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -84,7 +86,7 @@ const Index = () => {
 
       {/* Hero Slider Section */}
       {(() => {
-        const slides = [
+        const defaultSlides = [
           {
             image: heroImage,
             badge: "✨ Centro Médico de Excelencia",
@@ -105,8 +107,32 @@ const Index = () => {
           },
         ];
 
+        const [wpBanners, setWpBanners] = useState<WPPost[]>([]);
+
+        useEffect(() => {
+          fetchPostsByCategory(WP_CATEGORIES.banner, 6).then(({ posts }) => {
+            setWpBanners(posts.filter((p) => getPostImage(p, true)));
+          });
+        }, []);
+
+        const slides = wpBanners.length > 0
+          ? wpBanners.map((post) => {
+              const title = stripHtml(post.title.rendered);
+              return {
+                image: getPostImage(post, true),
+                badge: "🏥 Policlínico D'SILVA",
+                title: <>{title}</>,
+                description: stripHtml(post.excerpt.rendered) || "Conoce más sobre nuestros servicios médicos.",
+              };
+            })
+          : defaultSlides;
+
         const [current, setCurrent] = useState(0);
         const [isTransitioning, setIsTransitioning] = useState(false);
+
+        useEffect(() => {
+          setCurrent(0);
+        }, [wpBanners.length]);
 
         const goTo = useCallback((index: number) => {
           if (isTransitioning) return;
@@ -545,6 +571,7 @@ const Index = () => {
         </div>
       </section>
 
+      <AnnouncementModal />
       <Footer />
     </div>
   );
